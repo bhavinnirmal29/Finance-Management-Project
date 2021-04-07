@@ -19,13 +19,10 @@
     "@angular/platform-browser": "~11.2.4",
     "@angular/platform-browser-dynamic": "~11.2.4",
     "@angular/router": "~11.2.4",
-<<<<<<< HEAD
-=======
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
->>>>>>> 61e3fdd0a76a6a8db943812be9e5d658b78f60aa
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
