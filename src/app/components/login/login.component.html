@@ -1,0 +1,34 @@
+<h2>Login Component</h2>
+<div>
+    <form [formGroup]="login" (ngSubmit)="RegisterData()">
+        <table>
+        <tr><td>Username</td></tr>
+            <tr><td>
+                <input type="text" placeholder="Username" formControlName="name">
+                <span *ngIf="login.controls['name'].hasError('required')">Name cannot be blank</span></td></tr>
+        
+            <tr><td>Password</td></tr>
+            <tr><td>
+                <input type="password" placeholder="Password" formControlName="txtpass">
+                <span *ngIf="login.controls['txtpass'].hasError('required')">Password cannot be blank</span>
+                <span *ngIf="login.controls['txtpass'].hasError('minlength')">Password is too small</span>
+                <span *ngIf="login.controls['txtpass'].hasError('maxlength')">Password is too big</span>
+                <span *ngIf="login.controls['txtpass'].hasError('pattern')">Invalid pattern</span></td></tr>
+        </table>
+    <div>
+        <button type="submit" class="button" [disabled]="login.invalid" value="Register">Login</button>
+    </div>
+    <div>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    </div>
+    <div class="boxprop">
+        <button type="reset" class="button1">Cancel</button>
+        <label class="ForgotPassword"><u>Forgot Password?</u></label><br>    
+        <label>Have trouble logging in? <b>Get Help</b></label>
+    </div>
+    
+</form>
+</div>
+<app-footer></app-footer>

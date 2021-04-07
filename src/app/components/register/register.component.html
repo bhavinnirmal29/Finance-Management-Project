@@ -1,0 +1,71 @@
+<h2>Register Component</h2>
+<div>
+    <form #regform="ngForm" name="regform" (ngSubmit)="RegisterData(regform)">
+        <div>
+            <label>Registration Number</label>
+            <input type="text" name="RegNum" [(ngModel)]="model.RegNum" #RegNum="ngModel" required>
+            <span *ngIf="RegNum.errors?.required">Number Cannot be blank</span>
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" name="CustName" [(ngModel)]="model.CustName" #CustName="ngModel" required>
+            <span *ngIf="CustName.errors?.required">Name Cannot Be blank</span>
+        </div>
+        <div>
+            <label>Phone Number</label>
+            <input type="text" name="PhoneNo" [(ngModel)]="model.PhoneNo" #PhoneNo="ngModel" required>
+            <span *ngIf="PhoneNo.errors?.required">Number Cannot Be blank</span>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" name="Email" [(ngModel)]="model.Email" #Email="ngModel" required>
+            <span *ngIf="Email.errors?.required">Email Cannot Be blank</span>
+        </div>
+        <div>
+            <label>Username</label>
+            <input type="text" name="uname" [(ngModel)]="model.uname" #uname="ngModel" required>
+            <span *ngIf="uname.errors?.required">Username Cannot Be blank</span>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required>
+            <span *ngIf="pwd.errors?.required">Password Cannot Be blank</span>
+        </div>
+        <div>
+            <label>Address</label>
+            <textarea rows="3" cols="30" name="Address" [(ngModel)]="model.Address" #Address="ngModel" required >
+                </textarea>
+            <span *ngIf="Address.errors?.required">Address Cannot Be blank</span>
+        </div>
+    
+        <div>
+            <label>Card Type</label>
+            <input type="radio" name="Card" [(ngModel)]="model.Card" #Card="ngModel" value="Gold" required />Gold
+            <input type="radio" name="Card" [(ngModel)]="model.Card" #Card="ngModel"  value="Titanium"  required />Titanium
+            <span *ngIf="Card.errors?.required">Select CardType</span>
+    
+        </div>
+        <div>
+            <label>Bank Name</label>
+            <input type="text" name="Bank" [(ngModel)]="model.Bank" #Bank="ngModel" required />
+            <span *ngIf="Bank.errors?.required">BankName Cannot Be blank</span>
+        </div>
+        <div>
+            <label>Account Number</label>
+            <input type="text" name="Accountno" [(ngModel)]="model.Accountno" #Accountno="ngModel" required />
+            <span *ngIf="Accountno.errors?.required">AccountNumber Cannot Be blank</span>
+        </div>
+        <div>
+            <label>IFSC Code</label>
+            <input type="text" name="ifsc" [(ngModel)]="model.ifsc" #ifsc="ngModel" required />
+            <span *ngIf="ifsc.errors?.required">IFSCCode Cannot Be blank</span>
+        </div>
+        <div>
+            <button type="submit" [disabled]="regform.invalid">Register</button>
+        </div>
+        <div>
+            <button type="reset" [disabled]="regform.invalid">Reset</button>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
