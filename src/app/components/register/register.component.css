@@ -1,0 +1,7 @@
+.alert-msg{
+    font-size:medium;
+    display: inline-block;
+}
+.alert{
+    width:inherit;
+}
