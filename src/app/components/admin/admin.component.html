@@ -1,1 +1,30 @@
-<p>admin works!</p>
+<div>
+    <div class="card common-margin">
+        <div class="card-header">Login</div>
+            <div class="card-body">
+                <form #AdminForm="ngForm" name="AdminForm" (ngSubmit)="AdminLogin(AdminForm)">
+                    <div style="display:grid ;place-items:center;">
+                        <div class="form-group">
+                            <label for="userName"><i class="fa fa-user" aria-hidden="true"></i> Admin UserName</label>
+                            <input type="text" class="form-control input-width" name="userName" [(ngModel)]="model.userName" #userName="ngModel" placeholder="Admin Username" required />
+                            <br>
+                            <span class="alert alert-danger alert-msg" *ngIf="userName.touched && userName.errors?.required">UserName is Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd"><i class="fa fa-key"></i> Admin Password</label>
+                            <input type="password" class="form-control input-width" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" placeholder="Admin Password" required />
+                            <br>
+                            <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.required">Password is Required</span>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="card-footer card-footer-center">
+                        <button class="btn btn-primary" [disabled]="AdminForm.invalid">Login</button>
+                    </div>
+                </form>
+            </div>
+        <div>
+    </div>
+</div>
+<app-footer></app-footer>
+

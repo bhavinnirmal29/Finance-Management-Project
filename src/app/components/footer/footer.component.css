@@ -1,0 +1,19 @@
+.icon-size{
+    font-size: xx-large;
+}
+
+.footer-link-style{
+    font-size:18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 10px;
+    color:white;
+    transition-duration: 0.6s ;
+}
+.footer-link-style:hover{
+    color: mediumblue;
+    transition-property:all;
+    font-weight: bold;
+}
+.pipe-style{
+    font-size: xx-large;
+}

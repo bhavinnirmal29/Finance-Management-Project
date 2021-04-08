@@ -1,0 +1,16 @@
+.logo-size{
+    font-size: 24px;
+}
+.nav-link-style{
+    font-size:18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 10px;
+    color:white;
+    transition-duration: 0.2s ;
+}
+.nav-link-style:hover{
+    background-color: ghostwhite;
+    color:black;
+    transition-property:all;
+    font-weight: bold;
+}

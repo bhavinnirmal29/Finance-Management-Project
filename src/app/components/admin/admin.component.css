@@ -1,0 +1,38 @@
+.card-background{
+    color:grey;
+}
+.card-header{
+    font-size:34px;
+    text-align: center;
+}
+.common-margin{
+    margin-top:20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.form-center{
+    display:grid ;
+    place-items:center;
+}
+.card-footer-center{
+    display: grid;
+    place-items: center;
+}
+button{
+    width:200px;
+    height:40px;
+    line-height: 20px;
+    font-size: 26px;
+}
+button:hover{
+    background-color: black;
+    color:white;
+}
+.alert-msg{
+    font-size:medium;
+    padding-right: 120px;
+}
+
+.input-width{
+    width: 300px;
+}
