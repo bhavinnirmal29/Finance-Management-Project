@@ -14,3 +14,7 @@
     transition-property:all;
     font-weight: bold;
 }
+button.navbar-toggler{
+    background-color: black;
+    color: white;
+}
