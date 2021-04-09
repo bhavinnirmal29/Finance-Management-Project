@@ -42,15 +42,10 @@
         </div>
     </div>
 </div>
-<div class="card">
+<!-- <div class="card">
     <div class="card-header">Register</div>
     <div class="card-body">
         <form #regform="ngForm" name="regform" (ngSubmit)="RegisterData(regform)">
-            <div>
-                <label>Registration Number</label>
-                <input type="text" name="RegNum" [(ngModel)]="model.RegNum" #RegNum="ngModel" required>
-                <span *ngIf="RegNum.errors?.required">Number Cannot be blank</span>
-            </div>
             <div>
                 <label>Name</label>
                 <input type="text" name="CustName" [(ngModel)]="model.CustName" #CustName="ngModel" required>
@@ -75,8 +70,9 @@
             </div>
             <div>
                 <label>Enter Password</label>
-                <input type="password" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" maxlength="10" pattern="^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[@$!%?&])[A-Za-z0-9@$!%?&]{4,8}$" required>
-                <span *ngIf="pwd.errors?.pattern">Password have to be strong</span>
+                <input type="password" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" maxlength="10" required>
+                <span *ngIf="pwd.errors?.required">Password is Required</span>
+                
                 <span *ngIf="pwd.errors?.minlength">Minimum 4 characters required</span>
             </div>
             <div>
@@ -119,5 +115,5 @@
     <div class="card-footer">
         <button type="button" class="btn btn-outline-primary">Register</button>
     </div>
-</div>
+</div> -->
 <app-footer></app-footer>
