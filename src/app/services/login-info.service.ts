@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginInfoService {
-
-  constructor() { }
+  adminLogged:boolean;
+  adminUsername:string;
+  constructor() { 
+  }
 }

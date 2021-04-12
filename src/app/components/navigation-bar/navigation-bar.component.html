@@ -10,10 +10,12 @@
           <a class="nav-link nav-link-style" href="Home"><span><i class="fa fa-home" aria-hidden="true"></i></span>&nbsp;Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-style" href="Login"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;Login</a>
+          <a *ngIf="!svc.adminLogged" class="nav-link nav-link-style" [routerLink]="['/Login']"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;Login</a>
+          <a *ngIf="svc.adminLogged" class="nav-link nav-link-style" ><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;{{svc.adminUsername}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-style" href="Register"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Register</a>
+          <a *ngIf="!svc.adminLogged" class="nav-link nav-link-style" href="Register"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Register</a>
+          <a *ngIf="svc.adminLogged" class="nav-link nav-link-style" href="#" (click)="Logout()"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Logout</a>
         </li>
       </ul>
     </div>
