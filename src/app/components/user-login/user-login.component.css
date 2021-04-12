@@ -18,13 +18,13 @@
     display: grid;
     place-items: center;
 }
-button{
+.footer-button{
     width:200px;
     height:40px;
     line-height: 20px;
     font-size: 26px;
 }
-button:hover{
+.footer-button:hover{
     background-color: black;
     color:white;
 }
@@ -34,7 +34,14 @@ button:hover{
 }
 
 .input-width{
-    width: 300px;
+    width: 100%;
+}
+.alert-msg{
+    font-size:medium;
+    display: inline-block;
+}
+.alert{
+    width:inherit;
 }
 .login-bg{
     color:white;
@@ -44,4 +51,7 @@ button:hover{
 .card-body{
     background-color: #d9e4f5;
     background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+}
+  .bodybg-color {
+    background-color: red;
 }

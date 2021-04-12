@@ -3,41 +3,102 @@
         <div class="col-md-12">
             <div class="card">
                 <h2 class="card-header" style="text-align: center;">Register</h2>
-                <div class="card-body">
-                    <form #regform="ngForm" name="regform" (ngSubmit)="RegisterData(regform)">
+                <form #regform="ngForm" name="regform" (ngSubmit)="RegisterData(regform)">
+                    <div class="card-body">
+                    
                         <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i> Full Name : </label>
-                            <div class="col-sm-4">
+                            <label for="name" class="col-md-2 col-form-label"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i>&nbsp;Full Name : </label>
+                            <div class="col-md-10">
                                 <input type="text" class="form-control" name="CustName" [(ngModel)]="model.CustName" #CustName="ngModel" placeholder="Enter Full Name" required />
                                 <br>
-                                <span class="alert alert-danger alert-msg" *ngIf="CustName.errors?.required">Name is Required</span>
-                            </div>
-                            <label for="name" class="col-sm-2 col-form-label"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i> Mobile No. :</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="PhoneNo" [(ngModel)]="model.PhoneNo" #PhoneNo="ngModel" pattern="^[0-9]{10}$" placeholder="Enter Phone No." required />
-                                <br>
-                                <span class="alert alert-danger alert-msg" *ngIf="PhoneNo.touched && PhoneNo.errors?.required">Phone No. is Required</span>
-                                <span class="alert alert-danger alert-msg" *ngIf="PhoneNo.errors?.pattern">MobNo has to be numeric and 10 digits</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="CustName.touched && CustName.errors?.required">Name is Required</span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Email" class="col-sm-2 col-form-label"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i> Enter Email:</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Email" [(ngModel)]="model.Email" #Email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" required />
-                                <br>
-                                <span class="alert alert-danger alert-msg" *ngIf="Email.errors?.required">Email is Required</span>
-                                <span class="alert alert-danger alert-msg" *ngIf="Email.errors?.pattern">Invalid Email Pattern</span>
-                            </div>
-                            <label for="name" class="col-sm-2 col-form-label"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i> Mobile No. :</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="PhoneNo" [(ngModel)]="model.PhoneNo" #PhoneNo="ngModel" pattern="^[0-9]{10}$" placeholder="Enter Phone No." required />
+                            <label for="name" class="col-md-2 col-form-label"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>&nbsp;Mobile No. :</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control"  [(ngModel)]="model.PhoneNo" name="PhoneNo" #PhoneNo="ngModel" pattern="^[0-9]{10}$" placeholder="Enter Phone No." required />
                                 <br>
                                 <span class="alert alert-danger alert-msg" *ngIf="PhoneNo.touched && PhoneNo.errors?.required">Phone No. is Required</span>
-                                <span class="alert alert-danger alert-msg" *ngIf="PhoneNo.errors?.pattern">MobNo has to be numeric and 10 digits</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="PhoneNo.touched && PhoneNo.errors?.pattern">MobNo has to be numeric and 10 digits</span>
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="form-group row">
+                            <label for="Email" class="col-md-2 col-form-label"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;Email:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="Email" [(ngModel)]="model.Email" #Email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" required />
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="Email.touched && Email.errors?.required">Email is Required</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="Email.touched && Email.errors?.pattern">Invalid Email Pattern</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="uname" class="col-md-2 col-form-label"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>&nbsp;UserName:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="uname" [(ngModel)]="model.uname" #uname="ngModel" placeholder="Enter UserName" required />
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="uname.touched && uname.errors?.required">Username is Required</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><i class="fa fa-key fa-lg" aria-hidden="true"></i>&nbsp;Password:</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$%&]).*$" placeholder="Enter Password" required />
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.required">Password is Required</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.minlength">Minimum Length Should be 4</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.pattern">Invalid Password. Password must Contain 1 Uppercase,1 Lowercase ,1 Special Character and 1 Number</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Address" class="col-md-2 col-form-label"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i>&nbsp;Address:</label>
+                            <div class="col-md-10">
+                                <textarea name="Address" [(ngModel)]="model.Address" #Address="ngModel" class="form-control" rows="3" required></textarea><br>
+                                <span class="alert alert-danger alert-msg" *ngIf="Address.touched && Address.errors?.required">Address is Required</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><span><i class="fa fa-address-card-o fa-lg" aria-hidden="true"></i></span>&nbsp;Card Type:</label>
+                            <div class="col-md-10">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="Card" [(ngModel)]="model.Card" #Card="ngModel" required value="Gold">&nbsp;Gold<br>
+                                        <input type="radio" name="Card" [(ngModel)]="model.Card" #Card="ngModel" required value="Titanium">&nbsp;Titanium
+                                    </label>
+                                </div>
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="Card.errors?.required">Select Card Type</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><span><i class="fa fa-university fa-lg" aria-hidden="true"></i></span>Bank Name:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="Bank" [(ngModel)]="model.Bank" #Bank="ngModel" placeholder="Enter Bank Name" required/>
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="Bank.touched && Bank.errors?.required">Bank Name is Required</span> 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><span><i class="fa fa-th-large fa-lg" aria-hidden="true"></i></span>&nbsp;Account No:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="Accountno" [(ngModel)]="model.Accountno" #Accountno="ngModel" placeholder="Enter Account No" required/>
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="Accountno.touched && Accountno.errors?.required">Account No. is Required</span> 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><span><i class="fa fa-th-large fa-lg" aria-hidden="true"></i></span>&nbsp;IFSC Code:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="ifsc" [(ngModel)]="model.ifsc" #ifsc="ngModel" placeholder="Enter IFSC Code" required/>
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="ifsc.touched && ifsc.errors?.required">IFSC Code is Required</span> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer card-footer-center">
+                        <button class="btn btn-outline-primary" [disabled]="regform.invalid">Register</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -89,6 +150,7 @@
                 <span *ngIf="Card.errors?.required">Select CardType</span>
         
             </div>
+            
             <div>
                 <label>Bank Name</label>
                 <input type="text" name="Bank" [(ngModel)]="model.Bank" #Bank="ngModel" required>

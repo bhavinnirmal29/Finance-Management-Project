@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="container-fluid" style="background-color: black;">
+<footer class="container-fluid bg-footer">
 
     <!-- Footer Elements -->
     <div class="container">
@@ -7,19 +7,19 @@
       <!-- Social buttons -->
       <ul class="list-unstyled list-inline text-center" style="margin-top:20px;padding-top:50px">
         <li class="list-inline-item">
-            <a routerLink="Home" class="footer-link-style">
+            <a [routerLink]="['/Home']" class="footer-link-style">
               Home
             </a>
             &nbsp;&nbsp;|
           </li>
         <li class="list-inline-item">
-            <a routerLink="Login" class="footer-link-style">
+            <a [routerLink]="['/Login']" class="footer-link-style">
               Login
             </a>
             &nbsp;&nbsp;|
           </li>
         <li class="list-inline-item pipe-style">
-          <a routerLink="Register" class="footer-link-style">
+          <a [routerLink]="['/Register']" class="footer-link-style">
             Register
           </a>
         </li>

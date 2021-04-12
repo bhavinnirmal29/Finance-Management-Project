@@ -1,8 +1,8 @@
 <div>
     <div class="card common-margin">
-        <div class="card-header">Login</div>
-            <div class="card-body">
-                <form #AdminForm="ngForm" name="AdminForm" (ngSubmit)="AdminLogin(AdminForm)">
+        <div class="card-header login-bg">Admin Login</div>
+            <form #AdminForm="ngForm" name="AdminForm" (ngSubmit)="AdminLogin(AdminForm)">
+                <div class="card-body">        
                     <div style="display:grid ;place-items:center;">
                         <div class="form-group">
                             <label for="userName"><i class="fa fa-user" aria-hidden="true"></i> Admin UserName</label>
@@ -18,10 +18,10 @@
                         </div>
                         <br>
                     </div>
-                    <div class="card-footer card-footer-center">
-                        <button class="btn btn-primary" [disabled]="AdminForm.invalid">Login</button>
-                    </div>
-                </form>
+                </div>
+            </form>
+            <div class="card-footer card-footer-center login-bg">
+                <button class="btn btn-primary" [disabled]="AdminForm.invalid">Login</button>
             </div>
         <div>
     </div>

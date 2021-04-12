@@ -1,4 +1,9 @@
 <app-navigation-bar>
 
 </app-navigation-bar>
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <button type="button" class="btn active" data-toggle="button" (click)="scrollToTop()">
+        <i class="fa fa-chevron-up fa-lg" aria-hidden="true" (click)="scrollToTop()"></i>
+    </button>
+</div>
 <router-outlet></router-outlet>

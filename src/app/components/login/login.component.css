@@ -1,0 +1,52 @@
+.card-background{
+    color:grey;
+}
+.card-header{
+    font-size:34px;
+    text-align: center;
+}
+.common-margin{
+    margin-top:10%;
+    margin-bottom: 10%;
+}
+.form-center{
+    display:grid ;
+    place-items:center;
+}
+.card-footer-center{
+    display: grid;
+    place-items: center;
+}
+button{
+    width:200px;
+    height:40px;
+    line-height: 20px;
+    font-size: 26px;
+}
+button:hover{
+    background-color: black;
+    color:white;
+}
+.alert-msg{
+    font-size:medium;
+    padding-right: 120px;
+}
+.login-bg{
+    background-color: #861657;
+    background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+}
+body{
+    font-family: Arial;
+    padding: 10px;
+    background: blue;
+}
+.input-width{
+    width: 100%;
+}
+.alert-msg{
+    font-size:medium;
+    display: inline-block;
+}
+.alert{
+    width:inherit;
+}
