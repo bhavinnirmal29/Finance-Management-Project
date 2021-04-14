@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import * as bootstrap from 'bootstrap';
+import { HomeComponent } from './components/home/home.component';
+import { AdminRightsComponent } from './components/admin-rights/admin-rights.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import * as bootstrap from 'bootstrap';
     LoginComponent,
     RegisterComponent,
     AdminComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    AdminRightsComponent
   ],
   imports: [
     BrowserModule,

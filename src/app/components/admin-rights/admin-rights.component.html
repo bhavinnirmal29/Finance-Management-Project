@@ -1,0 +1,149 @@
+<div class="container-fluid">
+    <h4 class="justify-content-center" style="margin-top: 10px;">Admin Rights / <span style="opacity: 0.6;">{{buttonName}}</span></h4>
+    <a class="btn btn-primary" (click)="GetCustomers()" role="button">Get Customers</a>&nbsp;
+    <a class="btn btn-primary" (click) = "GetCustomerByID()" role="button">Get Customer By ID</a>&nbsp;
+    <a class="btn btn-primary" (click)="GetProducts()"  role="button">Get Products</a>&nbsp;
+    <a class="btn btn-primary" (click)="GetOrderDetails()"  role="button">Get Order Details</a>&nbsp;
+    <a class="btn btn-primary" (click)="PendingRequests()"  role="button">Pending Requests</a>&nbsp;
+    <hr>
+    <div *ngIf="buttonName=='GetCustomers';">
+        <table class="table table-bordered table-dark table-inverse table-responsive" style="margin-top: 10px;font-family:Arial, Helvetica, sans-serif">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>RegNumber</th>
+                    <th>CustName</th>
+                    <th>PhoneNo</th>
+                    <th>CustEmail</th>
+                    <th>CustUsername</th>
+                    <th>CustAddress</th>
+                    <th>CardType</th>
+                    <th>BankName</th>
+                    <!-- <th>AccountNumber</th> -->
+                    <th>IFSCCode</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of custlist;">
+                    <td scope="row">{{item.RegNumber}}</td>
+                    <td>{{item.CustName}}</td>
+                    <td>{{item.PhoneNo}}</td>
+                    <td>{{item.CustEmail}}</td>
+                    <td>{{item.CustUsername}}</td>
+                    <td>{{item.CustAddress}}</td>
+                    <td>{{item.CardType}}</td>
+                    <td>{{item.BankName}}</td>
+                    <!-- <td>{{item.AccountNumber}}</td> -->
+                    <td>{{item.IFSCCode}}</td>
+            
+                    <td> <a routerLink="/UpdateCustomer/{{item.RegNumber}}" class="btn btn-outline-primary" (click) ="UpdateCustomer(item.RegNumber)"> Update Customer</a></td>
+                    <td><a class="btn btn-outline-primary" (click) ="Delete(item.RegNumber)">DeleteCustomer</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="buttonName=='GetCustomerByID';" style="margin-bottom: 20%;">
+        <form action="" #DeleteForm = "ngForm" (ngSubmit) = "Delete(DeleteForm)">
+            <div class="form-group">
+            <label for="cid">Customer ID : </label>
+            <input type="text" class="form-control col-md-6" name="cid" aria-describedby="helpId" placeholder="Enter Customer ID" required>
+            <br><span *ngIf="cid.errors?.required">Registration ID cannot be blank</span>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="buttonName=='GetProducts';" style="margin-bottom: 10%;">
+        <table class="table table-bordered table-dark table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Desc</th>
+                    <th>Product Stock</th>
+                    <th>Product Price</th>
+                    <th>EDIT Product</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of productList">
+                        <td scope="row">{{item.ProductID}}</td>
+                        <td>{{item.ProductName}}</td>
+                        <td>{{item.ProductDesc}}</td>
+                        <td>{{item.ProductStock}}</td>
+                        <td>{{item.ProductPrice}}</td>
+                        <td><a class="btn btn-primary" [routerLink]="['/routePath']" href="#">EDIT</a></td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+    <div *ngIf="buttonName=='GetOrderDetails';" style="margin-bottom: 10%;">
+        <table class="table table-bordered table-dark table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Reg Number</th>
+                    <th>CardID</th>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>TotalAmount</th>
+                    <th>EMIDuration</th>
+                    <th>EMIPaid</th>
+                    <th>EMIBalance</th>
+                    <th>CreatedDate</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderList">
+                        <td scope="row">{{item.TransactionID}}</td>
+                        <td>{{item.RegNumber}}</td>
+                        <td>{{item.CardID}}</td>
+                        <td>{{item.ProductID}}</td>
+                        <td>{{item.Quantity}}</td>
+                        <td>{{item.TotalAmount}}</td>
+                        <td>{{item.EMIDuration}}</td>
+                        <td>{{item.EMIPaid}}</td>
+                        <td>{{item.EMIBalance}}</td>
+                        <td>{{item.CreatedDate}}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+    <div *ngIf="buttonName=='PendingRequests';">
+        <table class="table table-bordered table-dark table-inverse table-responsive" style="margin-top: 10px;font-family:Arial, Helvetica, sans-serif">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>RegNumber</th>
+                    <th>CustName</th>
+                    <th>PhoneNo</th>
+                    <th>CustEmail</th>
+                    <th>CustUsername</th>
+                    <th>CustAddress</th>
+                    <th>CardType</th>
+                    <th>BankName</th>
+                    <!-- <th>AccountNumber</th> -->
+                    <th>IFSCCode</th>
+                    <th>Approval Status</th>
+                    <th>Activate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of pendingRequests;">
+                    <td scope="row">{{item.RegNumber}}</td>
+                    <td>{{item.CustName}}</td>
+                    <td>{{item.PhoneNo}}</td>
+                    <td>{{item.CustEmail}}</td>
+                    <td>{{item.CustUsername}}</td>
+                    <td>{{item.CustAddress}}</td>
+                    <td>{{item.CardType}}</td>
+                    <td>{{item.BankName}}</td>
+                    <!-- <td>{{item.AccountNumber}}</td> -->
+                    <td>{{item.IFSCCode}}</td>
+                    <td>{{item.ApprovalStatus}}</td>
+            
+                    <td> <a class="btn btn-outline-primary" (click) ="ActivateCustomer(item.RegNumber)" href="#">Activate</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>         
+<app-footer></app-footer>

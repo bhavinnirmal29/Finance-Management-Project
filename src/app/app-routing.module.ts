@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminRightsComponent } from './components/admin-rights/admin-rights.component';
+
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -12,7 +14,8 @@ const routes: Routes = [
   {path:'Login',component:LoginComponent},
   {path:'Register',component:RegisterComponent},
   {path:'Admin',component:AdminComponent},
-  {path:'UserLogin',component:UserLoginComponent}
+  {path:'UserLogin',component:UserLoginComponent},
+  {path:'AdminRights',component:AdminRightsComponent}
 ];
 
 @NgModule({

@@ -29,3 +29,9 @@ button{
     color:white;
     border-color: whitesmoke;
 }
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  color: white;
+  border-radius: 5px;
+}
