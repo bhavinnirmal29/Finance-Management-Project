@@ -5,6 +5,7 @@
     <a class="btn btn-primary" (click)="GetProducts()"  role="button">Get Products</a>&nbsp;
     <a class="btn btn-primary" (click)="GetOrderDetails()"  role="button">Get Order Details</a>&nbsp;
     <a class="btn btn-primary" (click)="PendingRequests()"  role="button">Pending Requests</a>&nbsp;
+    
     <hr>
     <div *ngIf="buttonName=='GetCustomers';">
         <table class="table table-bordered table-dark table-inverse table-responsive" style="margin-top: 10px;font-family:Arial, Helvetica, sans-serif">
@@ -145,5 +146,5 @@
             </tbody>
         </table>
     </div>
-</div>         
+</div>
 <app-footer></app-footer>

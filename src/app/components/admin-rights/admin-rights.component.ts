@@ -23,6 +23,7 @@ export class AdminRightsComponent implements OnInit {
   pendingRequests:ReginfoModule[];
   constructor(svc:LoginInfoService,svc1:AdminInfoService) {
     this.svc1=svc1;
+    
    }
 
   ngOnInit(): void {
@@ -31,7 +32,6 @@ export class AdminRightsComponent implements OnInit {
       console.log(this.custlist);
     });
   }
-
   GetCustomers(){
     this.buttonName = "GetCustomers";
     this.svc1.GetCustomers().subscribe((data:ReginfoModule[])=>{

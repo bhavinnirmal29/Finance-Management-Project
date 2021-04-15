@@ -15,6 +15,8 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import * as bootstrap from 'bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { AdminRightsComponent } from './components/admin-rights/admin-rights.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AdminRightsComponent } from './components/admin-rights/admin-rights.com
     RegisterComponent,
     AdminComponent,
     UserLoginComponent,
-    AdminRightsComponent
+    AdminRightsComponent,
+    ProductListComponent,
+    PlaceOrderComponent
   ],
   imports: [
     BrowserModule,

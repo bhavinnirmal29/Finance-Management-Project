@@ -35,9 +35,8 @@ export class RegisterComponent implements OnInit {
     console.log(this.reg);
     console.log(this.model);
     this.svc.RegisterCustomer(this.reg).subscribe((data:boolean)=>{
-      alert(data);
       if(data==true){
-        alert("New Customer Registered");
+        alert("Your Registration is Complete");
       }
     })
   }

@@ -5,6 +5,8 @@ import { AdminRightsComponent } from './components/admin-rights/admin-rights.com
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path:'Register',component:RegisterComponent},
   {path:'Admin',component:AdminComponent},
   {path:'UserLogin',component:UserLoginComponent},
-  {path:'AdminRights',component:AdminRightsComponent}
+  {path:'AdminRights',component:AdminRightsComponent},
+  {path:'ProductList',component:ProductListComponent},
+  {path:'PlaceOrder',component:PlaceOrderComponent}
 ];
 
 @NgModule({

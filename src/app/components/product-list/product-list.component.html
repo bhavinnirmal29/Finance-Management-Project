@@ -1,0 +1,82 @@
+<!-- <div class="card-deck" >
+    <div *ngFor="let data of prod">
+    <div class="card">
+        <img class="card-img-top" src="../../../assets/media/demo.jpg" alt="">
+        <div class="card-body">
+            <h4 class="card-title">{{data.ProductName}}</h4>
+            <p class="card-text">{{data.ProductDesc}}</p>
+            <p class="card-text">&#8377;{{data.ProductPrice}}</p>
+            <button type="button" class="btn btn-outline-primary">Buy Now</button>
+        </div>
+    </div>
+    </div>
+</div> -->
+
+<div class="container" *ngIf="buttonName!='BuyNow'">
+    <div class="row mt-5">
+        <div class="col-sm-4" *ngFor="let data of prod">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="../../../assets/images/a4.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{data.ProductName}}</h5>
+                <p class="card-text">{{data.ProductDesc}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Rs. {{data.ProductPrice}}</li>
+                </ul>
+                <div class="card-body">
+                <a class="btn btn-outline-primary" (click)="BuyNow(data.ProductID)">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="buttonName=='BuyNow';" class="container justify-content-center">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" width="140" height="150" src="../../../assets/images/a4.jpg" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{PName}}</h5>
+        <p class="card-text">{{PDesc}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">₹ {{PPrice}}</li>
+        </ul>
+        <div class="card-body">
+        <!-- <a href="#" class="btn btn-outline-primary" (click)="BuyNow(data.ProductID)">Place Order</a> -->
+        </div>
+    </div>
+    <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">
+        <div class="display:grid;place-items:center;text-align:center">
+            <div class="form-group">
+                <label for="emiDuration">Select EMI Duration</label>
+                <select class="form-control col-sm-6" name="emiDuration" #emiDuration="ngModel" [(ngModel)]="model.emiDuration" required>
+                    <option value="3">3 Months</option>
+                    <option value="6">6 Months</option>
+                    <option value="9">9 Months</option>
+                    <option value="12">12 Months</option>
+                </select>
+                <br>
+                <span class="alert alert-danger" *ngIf="emiDuration.errors?.required">Select EMI Duration</span>
+            </div>
+            <button class="btn btn-outline-primary" type="submit" [disabled]="placeOrder.invalid">
+                Place Order
+            </button>
+        </div>
+    </form>
+        <!-- <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">
+            
+            <div style="display:grid ;place-items:center;">
+                <div class="form-group">
+                    <label for="name"><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;UserName</label>
+                    <input type="text" class="form-control input-width" placeholder="Username"  name="name" [(ngModel)]="model.name" #name="ngModel" required />
+                    <br>
+                    <span class="alert alert-danger alert-msg" *ngIf="name.errors?.required">UserName is Required</span>
+
+                </div>
+                <button class="btn btn-outline-primary" type="submit" [disabled]="placeOrder.invalid">
+                    Place Order
+                </button>
+            </div>
+    </form> -->
+</div>
+<app-footer></app-footer>
