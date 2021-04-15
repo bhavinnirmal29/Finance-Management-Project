@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminRightsComponent } from './components/admin-rights/admin-rights.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PlaceOrderComponent } from './components/place-order/place-order.compon
     UserLoginComponent,
     AdminRightsComponent,
     ProductListComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

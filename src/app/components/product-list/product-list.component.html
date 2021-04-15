@@ -63,15 +63,13 @@
             </button>
         </div>
     </form>
-        <!-- <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">
-            
+        <!-- <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">    
             <div style="display:grid ;place-items:center;">
                 <div class="form-group">
                     <label for="name"><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;UserName</label>
                     <input type="text" class="form-control input-width" placeholder="Username"  name="name" [(ngModel)]="model.name" #name="ngModel" required />
                     <br>
                     <span class="alert alert-danger alert-msg" *ngIf="name.errors?.required">UserName is Required</span>
-
                 </div>
                 <button class="btn btn-outline-primary" type="submit" [disabled]="placeOrder.invalid">
                     Place Order

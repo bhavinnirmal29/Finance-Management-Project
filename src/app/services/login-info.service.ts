@@ -8,6 +8,7 @@ import { AdminInfoModule } from '../modules/admin-info/admin-info.module';
 })
 export class LoginInfoService {
   adminLogged:boolean = false;
+  userLogged:boolean=false;
   ngZone:NgZone;
   router:Router;
   // adminUsername:string;
@@ -16,7 +17,9 @@ export class LoginInfoService {
   // Login(admin:AdminInfoModule){
   //   if()
   // }
+  userName:string;
   name1:string;
+  user:string;
   adminUsername:string;
   constructor(ngZone:NgZone,router:Router) { 
     this.ngZone=ngZone;
@@ -36,5 +39,16 @@ export class LoginInfoService {
     localStorage.setItem("AdminLogged","false");
     this.ngZone.run(()=>this.router.navigateByUrl('/Login'));
   }
-  
+  UserLogin(){
+    this.userLogged=true;
+    this.user = localStorage.getItem("UserUname");
+    this.userName = this.user;
+  }
+  UserLogout(){
+    this.userLogged=false;
+    this.userName= "";
+    localStorage.setItem("UserUname",null);
+    localStorage.setItem("UserLogged","false");
+    this.ngZone.run(()=>this.router.navigateByUrl('/Login'));
+  }
 }

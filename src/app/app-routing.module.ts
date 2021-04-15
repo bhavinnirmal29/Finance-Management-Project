@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminRightsComponent } from './components/admin-rights/admin-rights.component';
 
 import { AdminComponent } from './components/admin/admin.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'UserLogin',component:UserLoginComponent},
   {path:'AdminRights',component:AdminRightsComponent},
   {path:'ProductList',component:ProductListComponent},
-  {path:'PlaceOrder',component:PlaceOrderComponent}
+  {path:'PlaceOrder',component:PlaceOrderComponent},
+  {path:'Dashboard',component:DashboardComponent}
 ];
 
 @NgModule({

@@ -18,6 +18,11 @@ export class AppComponent implements OnInit{
   name1:string;
   logg:string;
   adminlog:boolean;
+  //User Login Variables
+  userLoginName:string;
+  userLoginLogged:boolean;
+  userTempLog:string;
+  //User Login End
   constructor(@Inject(DOCUMENT) private document: Document,svc:LoginInfoService) {
     this.svc=svc;
     }
@@ -28,12 +33,21 @@ export class AppComponent implements OnInit{
     this.name1=localStorage.getItem("AdminUsername");
     this.logg = localStorage.getItem("AdminLogged");
     this.adminlog=JSON.parse(this.logg);
+    //User Login Section
+    if(localStorage.getItem("UserUname")!=null){
+        this.userLoginName = localStorage.getItem("UserUname");
+        this.userTempLog = localStorage.getItem("UserLogged");
+        this.userLoginLogged  = JSON.parse(this.userTempLog);
+    }
     //alert(this.name1+"App Component");
   }
  
   onLogout(){
     //this.adminLogged=false;
     this.svc.Logout();
+  }
+  userLogout(){
+      this.svc.UserLogout();
   }
   windowScrolled: boolean;
   //On Window Scroll

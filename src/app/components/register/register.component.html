@@ -42,7 +42,7 @@
                         <div class="form-group row">
                             <label for="pwd" class="col-md-2 col-form-label"><i class="fa fa-key fa-lg" aria-hidden="true"></i>&nbsp;Password:</label>
                             <div class="col-md-10">
-                                <input type="password" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$%&]).*$" placeholder="Enter Password" required />
+                                <input type="password" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$%&]).*$" placeholder="Enter Password" required />
                                 <br>
                                 <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.required">Password is Required</span>
                                 <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.minlength">Minimum Length Should be 4</span>

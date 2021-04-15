@@ -16,13 +16,17 @@
             <a class="nav-link nav-link-style" href="ProductList"><span><i class="fa fa-product-hunt" aria-hidden="true"></i></span>&nbsp;Products</a>
           </li>
         <li class="nav-item">
-          <a *ngIf="!adminlog" class="nav-link nav-link-style" [routerLink]="['/Login']"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;Login</a>
+          <a *ngIf="!adminlog && !userLoginLogged" class="nav-link nav-link-style" [routerLink]="['/Login']"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;Login</a>
           <a *ngIf="adminlog" class="nav-link nav-link-style" ><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;{{name1}}</a>
+          <a *ngIf="userLoginLogged" class="nav-link nav-link-style" ><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;{{userLoginName}}</a>
           
         </li>
         <li class="nav-item">
-          <a *ngIf="!adminlog" class="nav-link nav-link-style" href="Register"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Register</a>
+          <a *ngIf="!adminlog && !userLoginLogged" class="nav-link nav-link-style" href="Register"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Register</a>
           <a *ngIf="adminlog" class="nav-link nav-link-style" href="#" (click)="onLogout()"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Logout</a>
+            <!-- For User Login Displaying of Logout button and Removing Register -->
+            <a *ngIf="userLoginLogged" class="nav-link nav-link-style" href="#" (click)="userLogout()"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Logout</a>
+
         </li>
         <li *ngIf="adminlog" class="nav-item">
             <a class="nav-link nav-link-style" [routerLink]="['/AdminRights']"><span><i class="fa fa-address-book-o" aria-hidden="true" ></i></span>&nbsp;Admin</a>
