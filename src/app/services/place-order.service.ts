@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PlaceOrderService {
 
   http : HttpClient;
-  url : string = 'http://localhost:56054/api/PlaceOrderAPI';
+  url : string = 'http://localhost:56054/api/ProductAPI';
   httpOptions = {headers : new HttpHeaders({
     'Content-Type' : 'application/json'
   })}

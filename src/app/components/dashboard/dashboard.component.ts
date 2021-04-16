@@ -53,8 +53,9 @@ export class DashboardComponent implements OnInit {
     this.custusername = localStorage.getItem("UserUname");
     this.svc.GetCardDetails(this.custusername).subscribe((data:EmiCardInfoModule)=>
     {
+      console.log(data)
       this.custname = data.CustName;
-      this.regno= data.RegNumber;
+      localStorage.setItem("LoggedRegNumber",""+data.RegNumber);
       this.cardno=data.CardNumber;
       this.validity=data.ValidityPeriod;
       this.cardtype=data.CardType;

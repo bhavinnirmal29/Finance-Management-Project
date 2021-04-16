@@ -1,95 +1,51 @@
 <div><h2>Dashboard</h2></div>
-<!--<form #idform="ngForm" name="idform" (ngSubmit)="CardDetails(idform)">
-    <div>Registration No</div>
-        <input type="text" name="regno" [(ngModel)]="model.regno" #regno="ngModel" required><br><br>
-        <span *ngIf="regno.errors?.required" style="color: red;">RegNo cannot be blank</span>
-    <div>
-        <br>
-        <button type="submit" [disabled]="idform.invalid">Submit Reg No</button>
-    </div>
-</form>-->
-
-<div class="card">
-    <div class="card__front card__part">
-      <img class="card__front-square card__square" src="../../../assets/images/cardChip1.jpg">
-      <img class="card__front-logo card__logo" src="../../../assets/images/emiLogo.jpg">
-      <p class="card_numer">{{cardno}}</p>
-      <div class="card__space-75">
-        <span class="card__label">Card holder</span>
-        <p class="card__info">{{custname}}</p>
-      </div>
-      <div class="card__space-25">
-        <span class="card__label">Expires</span>
-              <p class="card__info">{{validity}}</p>
-      </div>
-    </div>
-    
-    <div class="card__back card__part">
-      <div class="card__black-line"></div>
-      <div class="card__back-content">
-        <div class="card__secret">
-          <p class="card__secret--last">420</p>
+<div class="container" style="display: grid;place-items: center;margin-left: 10%;">
+    <div class="row">
+        <div class="card">
+            <div class="card__front card__part">
+            <img class="card__front-square card__square" src="../../../assets/images/EmiCard/cardChip1.jpg">
+            <img class="card__front-logo card__logo" src="../../../assets/images/EmiCard/emiLogo.jpg">
+            <p class="card_numer">{{cardno}}</p>
+            <div class="card__space-75">
+                <span class="card__label">Card holder</span>
+                <p class="card__info">{{custname}}</p>
+            </div>
+            <div class="card__space-25">
+                <span class="card__label">Expires</span>
+                <p class="card__info">{{validity}}</p>
+            </div>
+            <div class="card__space-25">
+                <span class="card__label">ACTIVATION STATUS</span>
+                <p class="card__info">{{accountstatus}}</p>
+            </div>
+            <div class="card__space-25">
+                <span class="card__label">CARD TYPE</span>
+                <p class="card__info">{{cardtype}}</p>
+            </div>
+            </div>
+            
+            <div class="card__back card__part">
+            <div class="card__black-line"></div>
+            <div class="card__back-content">
+                <div class="card__secret">
+                <p class="card__secret--last">420</p>
+                </div>
+                
+                <img class="card__back-square card__square" src="../../../assets/images/EmiCard/shoppingCart.png"> 
+                <!-- <img class="card__back-logo card__logo" src="../../../assets/images/emiLogo.jpg">-->
+                
+                
+            </div>
+            </div>
+            
         </div>
-        <img class="card__back-square card__square" src="../../../assets/images/cardChip1.jpg">
-        <img class="card__back-logo card__logo" src="../../../assets/images/emiLogo.jpg">
-        
-      </div>
     </div>
-    
-  </div>
-
-<br>
-<div id="card" class="card center">
-    <p class="emi_card">
-        EMI CARD
-    <img class="card_logo" src="../../../assets/images/emiLogo.jpg">
-    </p>
-
-    <img class="card_chip" src="../../../assets/images/cardChip1.jpg">
-    <h3 class="card_number">{{cardno}}</h3>
-    <p class="card_expiry"><span>Valid Till</span>{{validity}}</p>
-    <p class="card_name">{{custname}}</p>
-    <p class="card_type">{{cardtype}}</p>
-    <p class="activation_status">{{accountstatus}}</p>
 </div>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <br>
 <label>Order Details</label>
-<!--<div>
-    <table border="1">
-        <tr>
-            <th>Transaction ID</th>                
-            <th>Registration No</th>         
-            <th>Card Id</th>     
-            <th>Product Id</th>     
-            <th>Quantity</th>
-            <th>Total Amount</th> 
-            <th>Emi Duration</th>  
-            <th>EMI Paid</th>
-            <th>EMI Balance</th>
-            <th>Created Date</th>             
-        </tr>
-         <tr *ngFor="let value of order">
-             <td>{{value.TransactionID}}</td>
-             <td>{{value.RegNumber}}</td>
-             <td>{{value.CardID}}</td>
-             <td>{{value.ProductId}}</td>
-             <td>{{value.Quantity}}</td>
-             <td>{{value.TotalAmount}}</td>
-             <td>{{value.EMIDuration}}</td>
-             <td>{{value.EMIPaid}}</td>
-             <td>{{value.EMIBalance}}</td>
-             <td>{{value.CreatedDate}}</td>
-         </tr>
-    </table>
-</div>-->
 <table class="table table-striped table-inverse table-responsive">
     <thead class="thead-inverse">
         <tr>
@@ -108,11 +64,11 @@
         <tbody>
             
          <tr *ngFor="let value of order">
-            <td scope="row"></td>
-            <td>{{value.TransactionID}}</td>
+            
+            <td scope="row">{{value.TransactionID}}</td>
             <td>{{value.RegNumber}}</td>
             <td>{{value.CardID}}</td>
-            <td>{{value.ProductId}}</td>
+            <td>{{value.ProductID}}</td>
             <td>{{value.Quantity}}</td>
             <td>{{value.TotalAmount}}</td>
             <td>{{value.EMIDuration}}</td>
@@ -120,19 +76,9 @@
             <td>{{value.EMIBalance}}</td>
             <td>{{value.CreatedDate}}</td>
         </tr>
-            <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
-            </tr>
         </tbody>
 </table>
 
 
 
-<footer></footer>
+<app-footer></app-footer>

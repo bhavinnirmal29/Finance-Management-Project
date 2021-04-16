@@ -23,4 +23,5 @@ export class ProductInfoService {
    GetProductByID(pid:number):Observable<ProductInfoModule>{
     return this.http.get<ProductInfoModule>(this.url+"/"+"GetProductByID"+"/"+pid);
   }
+
 }

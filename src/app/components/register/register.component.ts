@@ -38,6 +38,12 @@ export class RegisterComponent implements OnInit {
       if(data==true){
         alert("Your Registration is Complete");
       }
-    })
+      else{
+        alert("Data not inserted");
+      }
+    },error => {
+      console.log(error);
+    alert ('Duplicate Values Found...');}
+    )
   }
 }

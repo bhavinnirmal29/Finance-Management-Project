@@ -49,6 +49,7 @@ export class LoginInfoService {
     this.userName= "";
     localStorage.setItem("UserUname",null);
     localStorage.setItem("UserLogged","false");
+    localStorage.setItem("LoggedRegNumber",null);
     this.ngZone.run(()=>this.router.navigateByUrl('/Login'));
   }
 }

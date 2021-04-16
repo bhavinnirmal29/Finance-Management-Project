@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class ReginfoModule {
+  RegNumber:number;
   CustName:string;
   PhoneNo:number;
   CustEmail:string;

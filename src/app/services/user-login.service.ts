@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UserLoginComponent } from '../components/user-login/user-login.component';
 import { EmiCardInfoModule } from '../modules/emi-card-info/emi-card-info.module';
 import { OrderDetailsModule } from '../modules/order-details/order-details.module';
+import { ReginfoModule } from '../modules/reginfo/reginfo.module';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class UserLoginService {
     this.http=http; 
   }
 
-  Login(name:string,pwd:string):Observable<string>{
-    return this.http.get<string>(this.url+"/"+"UserLogin"+"/"+name+"/"+pwd);
+  Login(username:string,pwd:string):Observable<string>{
+    return this.http.get<string>(this.url+"/"+"UserLogin"+"/"+username+"/"+pwd);
   }
 
   GetCardDetails(username:string):Observable<EmiCardInfoModule>{
@@ -33,5 +34,7 @@ export class UserLoginService {
   GetOrderDetails(username:string):Observable<OrderDetailsModule[]>{
     return this.http.get<OrderDetailsModule[]>(this.url+"/GetOrderDetails"+"/"+username);
   }
-
+  // GetCustomerByUsername(username:string):Observable<ReginfoModule[]>{
+  //   return this.http.get<ReginfoModule[]>(this.url+"/GetCustomerByUserName"+"/"+username);
+  // }
 }

@@ -41,7 +41,8 @@ position: absolute;
     padding: 10px;
 }
 
-
+.trans {
+}
 
 .emi_card {
     font-family: 'Lucida Console', sans-serif;
@@ -91,7 +92,10 @@ position: absolute;
 .card_expiry span{
     font-size: 8px;
 }
-
+.card_name {
+    
+    
+}
 
 .merchant_logo {
     width: 50px;
@@ -222,8 +226,8 @@ body{
 
 
 .card{
-width: 320px;
-height: 190px;
+width: 450px;
+height: 240px;
   -webkit-perspective: 600px;
   -moz-perspective: 600px;
   perspective:600px;
@@ -237,8 +241,8 @@ height: 190px;
 z-index: 1000;
   left: 0;
   display: inline-block;
-    width: 320px;
-    height: 190px;
+    width: 450px;
+    height: 240px;
     background-image: url('https://image.ibb.co/bVnMrc/g3095.png'), linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
     background-repeat: no-repeat;
     background-position: center;
@@ -275,7 +279,7 @@ z-index: 1000;
 }
 
 .card__logo {
-    height: 16px;
+    height: 35px;
 }
 
 .card__front-logo{
@@ -285,7 +289,7 @@ z-index: 1000;
 }
 .card__square {
     border-radius: 5px;
-    height: 30px;
+    height: 38px;
 }
 
 .card_numer {
@@ -301,12 +305,12 @@ z-index: 1000;
 }
 
 .card__space-75 {
-    width: 75%;
+    width: 65%;
     float: left;
 }
 
 .card__space-25 {
-    width: 25%;
+    width: 35%;
     float: left;
 }
 
@@ -375,4 +379,9 @@ border-radius: 4px;
 .card:hover .card__back {
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
+}
+
+.terms_conditions{
+    color: white;
+    text-align: center;
 }
