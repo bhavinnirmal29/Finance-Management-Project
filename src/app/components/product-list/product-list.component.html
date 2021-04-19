@@ -14,56 +14,93 @@
 
 <div class="container" *ngIf="buttonName!='BuyNow'">
     <div class="row mt-5">
-        <div class="col-sm-4" *ngFor="let data of prod">
+        <div class="col-sm-4" *ngFor="let data of prod; let i=index;">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/images/a4.jpg" alt="Card image cap">
+                <img class="card-img-top" src="../../../assets/images/Products/{{i+1}}.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">{{data.ProductName}}</h5>
                 <p class="card-text">{{data.ProductDesc}}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                <li class="list-group-item">Rs. {{data.ProductPrice}}</li>
+                <li class="list-group-item">₹ {{data.ProductPrice}}</li>
                 </ul>
                 <div class="card-body">
-                <a class="btn btn-outline-primary" (click)="BuyNow(data.ProductID)">Buy Now</a>
+                <a class="btn btn-outline-primary" (click)="BuyNow(data.ProductID,i+1)">Buy Now</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div *ngIf="buttonName=='BuyNow';" class="container justify-content-center">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" width="140" height="150" src="../../../assets/images/a4.jpg" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">{{PName}}</h5>
-        <p class="card-text">{{PDesc}}</p>
-        <p class="card-text">{{PQuantity}}</p>
+<div *ngIf="buttonName=='BuyNow';" class="container justify-content-center" style="margin-top: 1%;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" width="140" height="150" src="../../../assets/images/Products/{{productImage}}.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{PName}}</h5>
+                <p class="card-text">{{PDesc}}</p>
+                <p class="card-text">{{PQuantity}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">₹ {{PPrice}}</li>
+                </ul>
+                <div class="card-body">
+                <!-- <a href="#" class="btn btn-outline-primary" (click)="BuyNow(data.ProductID)">Place Order</a> -->
+                </div>
+            </div>
         </div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item">₹ {{PPrice}}</li>
-        </ul>
-        <div class="card-body">
-        <!-- <a href="#" class="btn btn-outline-primary" (click)="BuyNow(data.ProductID)">Place Order</a> -->
+        <div class="col-md-6">
+            <table class="table table-bordered table-inverse">
+                <thead>
+                    <tr>
+                        <th>EMI Duration</th>
+                        <th>COST Per Month</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3 Months</td>
+                        <td scope="row">{{month3}}</td>
+                    </tr>
+                    <tr>
+                        <td>6 Months</td>
+                        <td scope="row">{{month6}}</td>
+                    </tr>
+                    <tr>
+                        <td>9 Months</td>
+                        <td scope="row">{{month9}}</td>
+                    </tr>
+                    <tr>
+                        <td>12 Months</td>
+                        <td scope="row">{{month12}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">
-        <div class="display:grid;place-items:center;text-align:center">
-            <div class="form-group">
-                <label for="emiDuration">Select EMI Duration</label>
-                <select class="form-control col-sm-6" name="emiDuration" #emiDuration="ngModel" [(ngModel)]="model.emiDuration" required>
-                    <option value="3">3 Months</option>
-                    <option value="6">6 Months</option>
-                    <option value="9">9 Months</option>
-                    <option value="12">12 Months</option>
-                </select>
-                <br>
-                <span class="alert alert-danger" *ngIf="emiDuration.errors?.required">Select EMI Duration</span>
-            </div>
-            <button class="btn btn-outline-primary" type="submit" [disabled]="placeOrder.invalid">
-                Place Order
-            </button>
-        </div>
-    </form>
+    
+    <div class="row">
+        
+            <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">
+                <div class="display:grid;place-items:center;text-align:center">
+                    <div class="form-group col-md-12">
+                        <label for="emiDuration ml-2">Select EMI Duration</label>
+                        <select class="form-control col-md-12" name="emiDuration" #emiDuration="ngModel" [(ngModel)]="model.emiDuration" required>
+                            <option value="3">3 Months</option>
+                            <option value="6">6 Months</option>
+                            <option value="9">9 Months</option>
+                            <option value="12">12 Months</option>
+                        </select>
+                        <br>
+                        <span class="alert alert-danger" *ngIf="emiDuration.errors?.required">Select EMI Duration</span>
+                    </div>
+                    <button class="btn btn-outline-primary" type="submit" [disabled]="placeOrder.invalid">
+                        Place Order
+                    </button>
+                </div>
+            </form>
+        
+    </div>
         <!-- <form #placeOrder="ngForm" name="placeOrder" (ngSubmit)="PlaceOrder(placeOrder)">    
             <div style="display:grid ;place-items:center;">
                 <div class="form-group">

@@ -18,6 +18,11 @@ export class ProductListComponent implements OnInit {
   prod : ProductInfoModule[];
   ngZone:NgZone;
   router:Router;
+  productImage:number;
+  month3:number;
+  month6:number;
+  month9:number;
+  month12:number;
   constructor( svc : ProductInfoService,svc1:PlaceOrderService,ngZone:NgZone,router:Router) {
     this.svc = svc;
     this.svc1=svc1;
@@ -29,15 +34,21 @@ export class ProductListComponent implements OnInit {
    PDesc:string;
    PPrice:number;
   ngOnInit(): void {
+
     this.svc.GetProducts().subscribe((data:ProductInfoModule[])=>{
       this.prod=data;
       console.log(data);
     })
     this.model=[];
+    this.productImage=0;
+  }
+  convertToInt(val):number{
+    return parseInt(val);
   }
   pid:number;
   PQuantity:number;
-  BuyNow(prodID:number){
+  BuyNow(prodID:number,prodImageID:number){
+    this.productImage=prodImageID;
     this.buttonName="BuyNow";
     this.svc.GetProductByID(prodID).subscribe((data1:ProductInfoModule)=>{
       console.log(data1);
@@ -46,7 +57,14 @@ export class ProductListComponent implements OnInit {
       this.PDesc=data1.ProductDesc;
       this.PPrice=data1.ProductPrice;
       this.PQuantity = data1.ProductStock;
+      this.month3=this.convertToInt(this.PPrice/3);
+      this.month6=this.convertToInt(this.PPrice/6);
+      this.month9=this.convertToInt(this.PPrice/9);
+      this.month12=this.convertToInt(this.PPrice/12);
     })
+
+    
+   
   }
   emiDuration:number;
   regNumber:number;
@@ -62,7 +80,7 @@ export class ProductListComponent implements OnInit {
       console.log(data2);
       if(data2>1){
         alert("You are eligible to Order");
-        this.ngZone.run(()=>this.router.navigateByUrl('/PlaceOrder'));
+        this.ngZone.run(()=>this.router.navigateByUrl('/Dashboard'));
       }
       else{
         alert("You are not eligible to order");
