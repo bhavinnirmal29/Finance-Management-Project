@@ -11,7 +11,7 @@ import { ReginfoModule } from '../modules/reginfo/reginfo.module';
 export class AdminInfoService {
 
   http:HttpClient;
-  url:string='http://localhost:56054/api/AdminAPI';
+  url:string='http://localhost:51996/api/AdminAPI';
   httpOptions={headers:new HttpHeaders({
     'Content-Type':'application/json'
   })
@@ -50,4 +50,12 @@ export class AdminInfoService {
   {
     return this.http.get<ReginfoModule[]>(this.url+"/GetPendingRequests");
   }
+
+
+  //New Admin Integration
+  
+//  VerifyCustomer(id : number)
+//   {
+//     return this.http.post(this.url + "/" + "VerifyCustomer" + "/" + id ,this.httpOptions);
+//   }
 }

@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CreditInfoModule } from 'src/app/modules/credit-info/credit-info.module';
 import { EmiCardInfoModule } from 'src/app/modules/emi-card-info/emi-card-info.module';
 import { OrderDetailsModule } from 'src/app/modules/order-details/order-details.module';
 import { UserLoginService } from 'src/app/services/user-login.service';
@@ -47,10 +48,13 @@ export class DashboardComponent implements OnInit {
    emipaid:number;
    emibalance:number;
    createddate:number;  */
-
-
+   creditUsed:number;
+   remainingCredit:number;
+   totalCredit:number;
+   regNumber:number;
   ngOnInit(): void {
     this.custusername = localStorage.getItem("UserUname");
+    //Getting The card Details of The Logged In Customer
     this.svc.GetCardDetails(this.custusername).subscribe((data:EmiCardInfoModule)=>
     {
       console.log(data)
@@ -66,12 +70,19 @@ export class DashboardComponent implements OnInit {
       alert(data.RegNumber + "," + data.CardNumber + "," + data.ValidityPeriod + "," + data.CardType + "," + data.AccountStatus );
        
     });
-
+    //Getting Credit Card Info Of Logged In  Customer
+    this.regNumber = JSON.parse(localStorage.getItem("LoggedRegNumber"));
+    this.svc.GetCreditDetails(this.regNumber).subscribe((data:CreditInfoModule)=>{
+      console.log(data);
+      this.creditUsed = data.CreditUsed;
+      this.remainingCredit=data.RemainingCredit;
+      this.totalCredit=data.TotalCredit;
+    })
+    //Getting The Order Details of PArticular Customer
     this.svc.GetOrderDetails(this.custusername).subscribe((data:OrderDetailsModule[])=>
     {
         this.order=data;
         console.log(this.order);
-
     });
   }
 

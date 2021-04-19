@@ -22,10 +22,11 @@ export class AdminRightsComponent implements OnInit {
   orderList:OrderInfoModule[];
   pendingRequests:ReginfoModule[];
   constructor(svc:LoginInfoService,svc1:AdminInfoService) {
+
     this.svc1=svc1;
     
    }
-
+   public collection:any=[];
   ngOnInit(): void {
     this.svc1.GetCustomers().subscribe((data:ReginfoModule[])=>{
       this.custlist = data;
@@ -55,7 +56,6 @@ export class AdminRightsComponent implements OnInit {
       this.orderList = data;
       console.log(this.orderList);
     })
-
   }
   Delete(regNo:number) : void
   {
@@ -75,4 +75,44 @@ export class AdminRightsComponent implements OnInit {
       console.log(this.pendingRequests);
     })
   }
+  //Update Customer Function
+  // UpdateCustomer(item)
+  // {
+
+  //   this.svc1.UpdateCustomer(item.RegNumber, item).subscribe((result)=>{
+  //     if(result==true)
+  //     {
+  //       alert("Update Successfull");
+  //     }
+  //     else
+  //     {
+  //       alert("Update Unsuccessfull");
+  //     }
+  //   });
+  // }
+
+  //Delete Customer
+  // DeleteCustomer(item)
+  // {
+  //   this.collection.splice(item.RegNumber,1)
+  //   this.svc1.DeleteCustomer(item).subscribe((result)=>{
+  //     console.log("Data is Deleted",result)
+  //   })
+  // }
+  // //Verify Customer
+  // VerifyCustomer(item)
+  // {
+  //   this.collection.splice(item.RegNumber,1)
+  //   this.svc1.VerifyCustomer(item).subscribe((result)=>{
+  //   if(result==false)
+  //   {
+  //     alert("User Account has been approved ");
+  //   }
+  //   else
+  //   {
+  //     alert("User Account has been approved ");
+  //   }
+  //   console.log("Data is Verified",result)
+  //   })
+  // }
 }

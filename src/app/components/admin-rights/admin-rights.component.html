@@ -21,8 +21,9 @@
                     <th>BankName</th>
                     <!-- <th>AccountNumber</th> -->
                     <th>IFSCCode</th>
-                    <th>Edit</th>
+                    <th>Update</th>
                     <th>Delete</th>
+                    <th>Verify</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,9 +38,9 @@
                     <td>{{item.BankName}}</td>
                     <!-- <td>{{item.AccountNumber}}</td> -->
                     <td>{{item.IFSCCode}}</td>
-            
                     <td> <a routerLink="/UpdateCustomer/{{item.RegNumber}}" class="btn btn-outline-primary" (click) ="UpdateCustomer(item.RegNumber)"> Update Customer</a></td>
                     <td><a class="btn btn-outline-primary" (click) ="Delete(item.RegNumber)">DeleteCustomer</a></td>
+                    <!-- <td><a class="btn btn-outline-primary" (click) ="VerifyCustomer(item.RegNumber)" >VerifyCustomer</a></td> -->
                 </tr>
             </tbody>
         </table>

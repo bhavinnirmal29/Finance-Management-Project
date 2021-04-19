@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserLoginComponent } from '../components/user-login/user-login.component';
+import { CreditInfoModule } from '../modules/credit-info/credit-info.module';
 import { EmiCardInfoModule } from '../modules/emi-card-info/emi-card-info.module';
 import { OrderDetailsModule } from '../modules/order-details/order-details.module';
 import { ReginfoModule } from '../modules/reginfo/reginfo.module';
@@ -13,7 +14,7 @@ export class UserLoginService {
 
   cust:UserLoginComponent;
   http:HttpClient;
-  url:string='http://localhost:56054/api/UserLoginAPI';
+  url:string='http://localhost:51996/api/UserLoginAPI';
   httpOptions = {headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
@@ -37,4 +38,8 @@ export class UserLoginService {
   // GetCustomerByUsername(username:string):Observable<ReginfoModule[]>{
   //   return this.http.get<ReginfoModule[]>(this.url+"/GetCustomerByUserName"+"/"+username);
   // }
+  //Getting the Credit Card Balance Details for dashboard
+  GetCreditDetails(regNumber:number):Observable<CreditInfoModule>{
+    return this.http.get<CreditInfoModule>(this.url+"/GetCreditDetails"+"/"+regNumber);
+  }
 }

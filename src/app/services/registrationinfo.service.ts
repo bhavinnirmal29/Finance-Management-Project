@@ -10,7 +10,7 @@ import { ReginfoModule } from '../modules/reginfo/reginfo.module';
 })
 export class RegistrationinfoService {
   http:HttpClient;
-  url:string = 'http://localhost:56054/api/RegistrationAPI';
+  url:string = 'http://localhost:51996/api/RegistrationAPI';
   httpOptions={headers: new HttpHeaders({
     'Content-Type':'application/json'
   })
