@@ -21,4 +21,12 @@ export class RegistrationinfoService {
   RegisterCustomer(reg:ReginfoModule):Observable<boolean>{
     return this.http.post<boolean>(this.url+"/"+"RegisterCustomer",reg,this.httpOptions);
   }
+  getCurrentData(id:number)
+  {
+    return this.http.get(this.url + "/" + "GetCustomerById" + "/" + id) ;
+  }
+  UpdateCustomer(id : number, emp : ReginfoModule) : Observable<boolean>
+{
+  return this.http.put<boolean>(this.url + "/" + "UpdateCustomer" + "/" + id, emp, this.httpOptions);
+}
 }

@@ -5,6 +5,7 @@ import { UserLoginComponent } from '../components/user-login/user-login.componen
 import { CreditInfoModule } from '../modules/credit-info/credit-info.module';
 import { EmiCardInfoModule } from '../modules/emi-card-info/emi-card-info.module';
 import { OrderDetailsModule } from '../modules/order-details/order-details.module';
+import { PurchasedProductInfoModule } from '../modules/purchased-product-info/purchased-product-info.module';
 import { ReginfoModule } from '../modules/reginfo/reginfo.module';
 
 @Injectable({
@@ -35,11 +36,18 @@ export class UserLoginService {
   GetOrderDetails(username:string):Observable<OrderDetailsModule[]>{
     return this.http.get<OrderDetailsModule[]>(this.url+"/GetOrderDetails"+"/"+username);
   }
+
+  GetCreditDetails(regNumber:number):Observable<CreditInfoModule>{
+    return this.http.get<CreditInfoModule>(this.url+"/GetCreditDetails"+"/"+regNumber);
+  }
+  //Get Purchased Products
+  GetPurchasedProducts(regNumber:number):Observable<PurchasedProductInfoModule[]>{
+    return this.http.get<PurchasedProductInfoModule[]>(this.url+"/GetPurchasedProducts"+"/"+regNumber);
+  }
   // GetCustomerByUsername(username:string):Observable<ReginfoModule[]>{
   //   return this.http.get<ReginfoModule[]>(this.url+"/GetCustomerByUserName"+"/"+username);
   // }
-  //Getting the Credit Card Balance Details for dashboard
-  GetCreditDetails(regNumber:number):Observable<CreditInfoModule>{
-    return this.http.get<CreditInfoModule>(this.url+"/GetCreditDetails"+"/"+regNumber);
+  CheckApprovalStatus(RegNumber:number):Observable<boolean>{
+    return this.http.get<boolean>(this.url+"/CheckApprovalStatus/"+RegNumber);
   }
 }

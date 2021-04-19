@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ActivityLogInfoModule } from '../modules/activity-log-info/activity-log-info.module';
+import { AdminInfoModule } from '../modules/admin-info/admin-info.module';
 import { OrderInfoModule } from '../modules/order-info/order-info.module';
 import { ProductInfoModule } from '../modules/product-info/product-info.module';
 import { ReginfoModule } from '../modules/reginfo/reginfo.module';
@@ -50,12 +52,22 @@ export class AdminInfoService {
   {
     return this.http.get<ReginfoModule[]>(this.url+"/GetPendingRequests");
   }
+  ActivateCustomer(RegNumber : number):Observable<boolean>
+  {
+    return this.http.get<boolean>(this.url+"/Activate/" +RegNumber);
+  }
+  UpdateCustomer(id : number, cust :AdminInfoModule) : Observable<boolean>
+  {
+  return this.http.put<boolean>(this.url + "/" + "UpdateCustomer" + "/" + id, cust, this.httpOptions);
+  }
+  getCurrentData(id:number)
+  {
+  return this.http.get(this.url + "/" + "GetCustomerById" + "/" + id) ;
+  }
 
-
-  //New Admin Integration
+  GetActivityLog():Observable<ActivityLogInfoModule[]>
+  {
+    return this.http.get<ActivityLogInfoModule[]>(this.url+"/GetActivityLog");
+  }
   
-//  VerifyCustomer(id : number)
-//   {
-//     return this.http.post(this.url + "/" + "VerifyCustomer" + "/" + id ,this.httpOptions);
-//   }
 }
