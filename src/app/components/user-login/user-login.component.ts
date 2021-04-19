@@ -26,9 +26,13 @@ export class UserLoginComponent implements OnInit {
     this.ngZone = ngZone;
     this.router=router;
    }
+   username:string;
   ngOnInit(): void {
+
+  
  
   }
+ 
   showModal():void {
     ($("#myModal") as any).modal('show');
   }
@@ -51,6 +55,7 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem("UserLogged","true");
         this.ngZone.run(()=>this.router.navigateByUrl('/Dashboard'));
         this.svc1.UserLogin();
+
       }
       else{
         alert(data);

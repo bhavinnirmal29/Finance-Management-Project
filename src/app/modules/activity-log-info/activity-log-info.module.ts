@@ -9,8 +9,9 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class CreditInfoModule {
-  TotalCredit:number;
-  RemainingCredit:number;
-  CreditUsed:number;
- }
+export class ActivityLogInfoModule {
+  ActivityID:number;
+  LogType:string;
+  ActivityDesc:string;
+  ActivityTimeStamp:string;
+}

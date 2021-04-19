@@ -1,122 +1,44 @@
-<!-- <h2>Login Component</h2>
 <div>
-    <form [formGroup]="login" (ngSubmit)="RegisterData()">
-        <table>
-        <tr><td>Username</td></tr>
-            <tr><td>
-                <input type="text" placeholder="Username" formControlName="name">
-                <span *ngIf="login.controls['name'].hasError('required')">Name cannot be blank</span></td></tr>
-        
-            <tr><td>Password</td></tr>
-            <tr><td>
-                <input type="password" placeholder="Password" formControlName="txtpass">
-                <span *ngIf="login.controls['txtpass'].hasError('required')">Password cannot be blank</span>
-                <span *ngIf="login.controls['txtpass'].hasError('minlength')">Password is too small</span>
-                <span *ngIf="login.controls['txtpass'].hasError('maxlength')">Password is too big</span>
-                <span *ngIf="login.controls['txtpass'].hasError('pattern')">Invalid pattern</span></td></tr>
-        </table>
-    <div>
-        <button type="submit" class="button" [disabled]="login.invalid" value="Register">Login</button>
-    </div>
-    <div>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-    </div>
-    <div class="boxprop">
-        <button type="reset" class="button1">Cancel</button>
-        <label class="ForgotPassword"><u>Forgot Password?</u></label><br>    
-        <label>Have trouble logging in? <b>Get Help</b></label>
-    </div>
-    <div>
-        <h3>New To FMS ? <a [routerLink]="['/Register']" >Register Here</a></h3>
-    </div>
-    
-</form>
-</div> -->
-<div>
-    <div class="card common-margin">
-        <div class="card-header login-bg ">User Login</div>
-            <form #loginForm="ngForm" name="loginForm" (ngSubmit)="Login(loginForm)">
-                <div class="card-body">
-                    <div style="display:grid ;place-items:center;">
-                        <div class="form-group">
-                            <label for="name"><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;UserName</label>
-                            <input type="text" class="form-control input-width" placeholder="Username"  name="name" [(ngModel)]="model.name"
-                            #name="ngModel" required />
-                            <br>
-                            <span class="alert alert-danger alert-msg" *ngIf="name.errors?.required">UserName is Required</span>
+  <div  class="card common-margin">
+      <div class="card-header login-bg ">User Login</div>
+      <form #loginForm="ngForm" name="loginForm" (ngSubmit)="Login(loginForm)">
+          <div class="card-body">
+              <div style="display:grid ;place-items:center;">
+                  <div class="form-group">
+                      <label for="name"><i class="fa fa-user fa-lg" aria-hidden="true"></i>&nbsp;UserName</label>
+                      <input type="text" class="form-control input-width" placeholder="Username" name="name" [(ngModel)]="model.name" #name="ngModel" required />
+                      <br>
+                      <span class="alert alert-danger alert-msg" *ngIf="name.errors?.required">UserName is Required</span>
 
-                        </div>
-                        <div class="form-group ">
-                            <label for="pwd"><i class="fa fa-key fa-lg"></i>&nbsp;Password</label>
-                            <input type="password" class="form-control input-width" placeholder="User Password" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required />
-                            <br>
-                            <span class="alert alert-danger alert-msg" *ngIf="pwd.errors?.required">Password is Required</span>
-                        </div>
-                        <!-- <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" formControlName="rememberMe" type="checkbox" value="checkedValue"> Remember Me
-                            </label>
-                        </div> -->
-                        <br>
-                        <div>
-                            <h5><a data-toggle="modal" data-target="#myModal" (click)="showModal()" [routerLink]="['/ForgotPassword']" >FORGOT PASSWORD?</a></h5>
-                        </div>
-                        <br>
-                        <div>
-                            <h5>Don't Have an Account? <a [routerLink]="['/Register']" >Register Here</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer card-footer-center login-bg">
-                    <button class="btn btn-primary footer-button" type="submit" [disabled]="loginForm.invalid">Login</button>
-                </div>
-            </form>
-        <div>
-    </div>
-</div>
-<!-- <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button> -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="showModal()">
-    Open modal
-  </button> -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-                <label for=""><i class="fa fa-phone"></i>&nbsp;Phone</label>
-                <input type="text" class="form-control" name="otp"  placeholder="Enter Phone">
+                  </div>
+                  <div class="form-group ">
+                      <label for="pwd"><i class="fa fa-key fa-lg"></i>&nbsp;Password</label>
+                      <input type="password" class="form-control input-width" placeholder="User Password" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required />
+                      <br>
+                      <span class="alert alert-danger alert-msg" *ngIf="pwd.errors?.required">Password is Required</span>
+                  </div>
+
+                  <br>
+                  <!-- <div>
+                      <h5><a data-toggle="modal" data-target="#myModal" (click)="showModal()" [routerLink]="['/ForgotPassword']">FORGOT PASSWORD?</a></h5>
+                  </div> -->
+                  <div><a routerLink="/OTP" routerLinkActive="active">Forgot Password?</a></div>
+                  <br>
+                  <div>
+                      <h5>Don't Have an Account? <a [routerLink]="['/Register']">Register Here</a></h5>
+                  </div>
               </div>
-            <div class="form-group">
-              <label for="">OTP</label>
-              <input type="text" class="form-control" name="otp" placeholder="Enter OTP">
-            </div>
-            <div class="form-group">
-                <label for="newPwd">New Password</label>
-                <input type="password" class="form-control" name="newPwd" placeholder="Enter New Password">
-              </div>
-              <div class="form-group">
-                <label for="conPwd">Confirm Password</label>
-                <input type="password" class="form-control" name="conPwd" placeholder="Confirm Password">
-              </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
-        </div>
+          </div>
+          <div class="card-footer card-footer-center login-bg">
+              <button class="btn btn-primary footer-button" type="submit" [disabled]="loginForm.invalid">Login</button>
+          </div>
+      </form>
+      <div>
       </div>
-    </div>
   </div>
+</div>
 <app-footer>
 
 </app-footer>
+
 
