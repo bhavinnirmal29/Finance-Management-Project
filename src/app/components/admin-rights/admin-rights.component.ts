@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { AdminInfoModule } from 'src/app/modules/admin-info/admin-info.module';
 import { OrderInfoModule } from 'src/app/modules/order-info/order-info.module';
@@ -6,6 +8,9 @@ import { ProductInfoModule } from 'src/app/modules/product-info/product-info.mod
 import { ReginfoModule } from 'src/app/modules/reginfo/reginfo.module';
 import { AdminInfoService } from 'src/app/services/admin-info.service';
 import { LoginInfoService } from 'src/app/services/login-info.service';
+import { ActivityLogInfoModule } from 'src/app/modules/activity-log-info/activity-log-info.module';
+// import * as bootstrap from 'bootstrap';
+// import * as jquery from 'jquery'
 
 @Component({
   selector: 'app-admin-rights',
@@ -22,11 +27,10 @@ export class AdminRightsComponent implements OnInit {
   orderList:OrderInfoModule[];
   pendingRequests:ReginfoModule[];
   constructor(svc:LoginInfoService,svc1:AdminInfoService) {
-
     this.svc1=svc1;
     
    }
-   public collection:any=[];
+
   ngOnInit(): void {
     this.svc1.GetCustomers().subscribe((data:ReginfoModule[])=>{
       this.custlist = data;
@@ -45,6 +49,7 @@ export class AdminRightsComponent implements OnInit {
   }
   GetProducts(){
     this.buttonName="GetProducts";
+
     this.svc1.GetProducts().subscribe((data:ProductInfoModule[])=>{
       this.productList = data;
       console.log(this.productList);
@@ -56,8 +61,9 @@ export class AdminRightsComponent implements OnInit {
       this.orderList = data;
       console.log(this.orderList);
     })
+
   }
-  Delete(regNo:number) : void
+  Delete(regNo:number) : void 
   {
     this.custid = regNo;
     alert(regNo+" Cust ID : "+this.custid);
@@ -67,7 +73,10 @@ export class AdminRightsComponent implements OnInit {
         alert('Record Deleted Successfully');
       }
     });
+
   }
+
+ 
   PendingRequests(){
     this.buttonName="PendingRequests";
     this.svc1.PendingRequests().subscribe((data:ReginfoModule[])=>{
@@ -75,44 +84,27 @@ export class AdminRightsComponent implements OnInit {
       console.log(this.pendingRequests);
     })
   }
-  //Update Customer Function
-  // UpdateCustomer(item)
-  // {
+  ActivateCustomer(regNo:number){
 
-  //   this.svc1.UpdateCustomer(item.RegNumber, item).subscribe((result)=>{
-  //     if(result==true)
-  //     {
-  //       alert("Update Successfull");
-  //     }
-  //     else
-  //     {
-  //       alert("Update Unsuccessfull");
-  //     }
-  //   });
-  // }
+    this.custid = regNo;
 
-  //Delete Customer
-  // DeleteCustomer(item)
-  // {
-  //   this.collection.splice(item.RegNumber,1)
-  //   this.svc1.DeleteCustomer(item).subscribe((result)=>{
-  //     console.log("Data is Deleted",result)
-  //   })
-  // }
-  // //Verify Customer
-  // VerifyCustomer(item)
-  // {
-  //   this.collection.splice(item.RegNumber,1)
-  //   this.svc1.VerifyCustomer(item).subscribe((result)=>{
-  //   if(result==false)
-  //   {
-  //     alert("User Account has been approved ");
-  //   }
-  //   else
-  //   {
-  //     alert("User Account has been approved ");
-  //   }
-  //   console.log("Data is Verified",result)
-  //   })
-  // }
+    this.svc1.ActivateCustomer(regNo).subscribe((data:boolean)=>{
+
+      console.log(regNo + ' ' + 'verified');
+      alert(this.custid + ' Verified');
+      console.log(data);
+
+      //this.router.navigateByUrl('/app-admin-rights');//routing does not work :( huhuhu
+
+    })
+
+  }
+  activityList:ActivityLogInfoModule[];
+  GetActivityLog(){
+    this.buttonName="GetActivityLog";
+    this.svc1.GetActivityLog().subscribe((data:ActivityLogInfoModule[])=>{
+      this.activityList=data;
+    })
+  }
+  
 }

@@ -1,7 +1,7 @@
 <!-- <app-navigation-bar>
 
 </app-navigation-bar> -->
-<nav class="navbar navbar-expand-lg bg-navbar">
+<nav class="navbar navbar-expand-lg bg-navbar ">
     <a class="navbar-brand logo-size" href="#">Finance System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><i class="fa fa-bars fa-lg"></i></span>
@@ -13,19 +13,23 @@
           <a class="nav-link nav-link-style" href="Home"><span><i class="fa fa-home" aria-hidden="true"></i></span>&nbsp;Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link-style" href="ProductList"><span><i class="fa fa-product-hunt" aria-hidden="true"></i></span>&nbsp;Products</a>
+            <a *ngIf="userLoginLogged" class="nav-link nav-link-style" href="ProductList"><span><i class="fa fa-product-hunt" aria-hidden="true"></i></span>&nbsp;Products</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="userLoginLogged" class="nav-link nav-link-style" href="Dashboard"><span><i class="fa fa-dashcube" aria-hidden="true"></i></span>&nbsp;Dashboard</a>
           </li>
         <li class="nav-item">
           <a *ngIf="!adminlog && !userLoginLogged" class="nav-link nav-link-style" [routerLink]="['/Login']"><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;Login</a>
-          <a *ngIf="adminlog" class="nav-link nav-link-style" ><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;{{name1}}</a>
-          <a *ngIf="userLoginLogged" class="nav-link nav-link-style" ><span><i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;{{userLoginName}}</a>
-          
+          <a *ngIf="adminlog" class="nav-link nav-link-style" href="#"><span><i class="fa fa-user-circle" aria-hidden="true"></i></span>&nbsp;{{name1}}</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="userLoginLogged" class="nav-link nav-link-style" href="#"><span><i class="fa fa-user-circle" aria-hidden="true"></i></span>&nbsp;{{userLoginName}}</a>
         </li>
         <li class="nav-item">
           <a *ngIf="!adminlog && !userLoginLogged" class="nav-link nav-link-style" href="Register"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Register</a>
-          <a *ngIf="adminlog" class="nav-link nav-link-style" href="#" (click)="onLogout()"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Logout</a>
+          <a *ngIf="adminlog" class="nav-link nav-link-style" href="#" (click)="onLogout()"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>&nbsp;Logout</a>
             <!-- For User Login Displaying of Logout button and Removing Register -->
-            <a *ngIf="userLoginLogged" class="nav-link nav-link-style" href="#" (click)="userLogout()"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>&nbsp;Logout</a>
+            <a *ngIf="userLoginLogged" class="nav-link nav-link-style" href="#" (click)="userLogout()"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>&nbsp;Logout</a>
 
         </li>
         <li *ngIf="adminlog" class="nav-item">

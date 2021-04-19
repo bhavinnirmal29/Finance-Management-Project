@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +16,9 @@ import { AdminRightsComponent } from './components/admin-rights/admin-rights.com
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OtpComponent } from './components/otp/otp.component';
+import { CommonModule } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AdminRightsComponent,
     ProductListComponent,
     PlaceOrderComponent,
-    DashboardComponent
+    DashboardComponent,
+    OtpComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
