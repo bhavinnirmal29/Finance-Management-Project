@@ -1,0 +1,66 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h2 class="card-header" style="text-align: center;">Reset Password</h2>
+                <form #regform="ngForm" name="regform" (ngSubmit)="RegisterData(regform)">
+                    <div class="card-body">
+                        <div style="display:grid ;">
+
+
+                            <div class="form-group row">
+                                <label for="Email" class="col-md-2 col-form-label"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;Email:</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" name="Email" [(ngModel)]="model.Email" #Email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" required />
+                                    <br>
+                                    <span class="alert alert-danger alert-msg" *ngIf="Email.touched && Email.errors?.required">Email is Required</span>
+                                    <span class="alert alert-danger alert-msg" *ngIf="Email.touched && Email.errors?.pattern">Invalid Email Pattern</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer card-footer-center login-bg">
+                        <button class="btn btn-outline-primary">Submit</button>
+                    </div>
+                </form>
+                <form #PassReset="ngForm" name="PassReset" (ngSubmit)="ResetPassword(PassReset)">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="name" class="col-md-2 col-form-label"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>&nbsp;OTP :</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" [(ngModel)]="model.otp" name="otp" #otp="ngModel" placeholder="Enter OTP" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><i class="fa fa-key fa-lg" aria-hidden="true"></i>&nbsp;Password:</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$%@@&]).*$" placeholder="Enter Password" required />
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.required">Password is Required</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.minlength">Minimum Length Should be 4</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.pattern">Invalid Password. Password must Contain 1 Uppercase,1 Lowercase ,1 Special Character and 1 Number</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-md-2 col-form-label"><i class="fa fa-key fa-lg" aria-hidden="true"></i>&nbsp;Confirm Password:</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" minlength="4" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$%@@&]).*$" placeholder="Enter confirm Password" required />
+                                <br>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.required">Password is Required</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.minlength">Minimum Length Should be 4</span>
+                                <span class="alert alert-danger alert-msg" *ngIf="pwd.touched && pwd.errors?.pattern">Invalid Password. Password must Contain 1 Uppercase,1 Lowercase ,1 Special Character and 1 Number</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer card-footer-center login-bg">
+                        <button class="btn btn-outline-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
