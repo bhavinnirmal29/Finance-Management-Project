@@ -1,4 +1,4 @@
-<div><h2>Dashboard</h2></div>
+<div style="margin-top: 4em;"><h2>Dashboard</h2></div>
 <div class="container" style="display: grid;place-items: center;margin-left: 10%;">
     <div class="row">
         <div class="card">
@@ -25,17 +25,17 @@
             </div>
             
             <div class="card__back card__part">
-                <div class="card__black-line"></div>
-                <div class="card__back-content">
-                    <div class="card__secret">
-                    <p class="card__secret--last">420</p>
-                    </div>
-                    
-                    <img class="card__back-square card__square" src="../../../assets/images/EmiCard/shoppingCart.png"> 
+            <div class="card__black-line"></div>
+            <div class="card__back-content">
+                <div class="card__secret">
+                <p class="card__secret--last">420</p>
+                </div>
+                
+                <img class="card__back-square card__square" src="../../../assets/images/EmiCard/shoppingCart.png"> 
                 <!-- <img class="card__back-logo card__logo" src="../../../assets/images/emiLogo.jpg">-->
                 
                 
-                </div>
+            </div>
             </div>
             
         </div>
@@ -43,52 +43,95 @@
 </div>
 <br>
 <br>
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Credit Card Details</h4>
-        <h6>Total Credit : {{totalCredit}}</h6>
-        <h6>Credit Used : {{creditUsed}}</h6>
-        <h6>Remaining Credit: {{remainingCredit}}</h6>
-    </div>
-</div>
 
-<br>
-
-
-<label>Order Details</label>
-<table class="table table-striped table-inverse table-responsive">
+<table class="table table-hover table-bordered table-inverse table-responsive">
     <thead class="thead-inverse">
+        
         <tr>
-            <th>Transaction ID</th>                
-            <th>Registration No</th>         
-            <th>Card Id</th>     
-            <th>Product Id</th>     
-            <th>Quantity</th>
-            <th>Total Amount</th> 
-            <th>Emi Duration</th>  
-            <th>EMI Paid</th>
-            <th>EMI Balance</th>
-            <th>Created Date</th>
+            <th>Total Credit</th>
+            <th>Credit Used</th>
+            <th>Remaining Credit</th>
         </tr>
         </thead>
         <tbody>
-            
-         <tr *ngFor="let value of order">
-            
-            <td scope="row">{{value.TransactionID}}</td>
-            <td>{{value.RegNumber}}</td>
-            <td>{{value.CardID}}</td>
-            <td>{{value.ProductID}}</td>
-            <td>{{value.Quantity}}</td>
-            <td>{{value.TotalAmount}}</td>
-            <td>{{value.EMIDuration}}</td>
-            <td>{{value.EMIPaid}}</td>
-            <td>{{value.EMIBalance}}</td>
-            <td>{{value.CreatedDate}}</td>
-        </tr>
+            <tr>
+                <td scope="row">{{totalCredit}}</td>
+                <td>{{creditUsed}}</td>
+                <td>{{remainingCredit}}</td>
+            </tr>
         </tbody>
 </table>
+<br>
 
+<div class="container justify-content-center" style="display: grid;place-items: center;">
+    <a style="color: white;padding: 10px;" class="btn btn-primary btn-lg" (click) = "CheckApprovalStatus()" role="button">Pay Registeration fee</a>&nbsp;
+    <a style="color: white;padding: 10px;" class="btn btn-primary btn-lg" (click)="GetPurchasedProducts()" role="button">Get Purchased Products</a>&nbsp;
+    <a style="color: white;padding: 10px;" class="btn btn-primary btn-lg" (click) = "GetOrderDetails()" role="button">Get Order Details</a>&nbsp;
+</div>
+
+<div *ngIf="dashboardButtonName=='GetPurchasedProducts';">
+    <br>
+    <h4>/Purchased Products</h4>
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Product ID</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Total Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of purchasedList">
+                    <td>{{item.ProductID}}</td>
+                    <td><img src="../../../assets/images/Products/{{item.ProductID}}.jpg" width="200" height="200" alt=""></td>
+                    <td>{{item.ProductName}}</td>
+                    <td>{{item.Quantity}}</td>
+                    <td>{{item.TotalAmount}}</td>
+                </tr>
+            </tbody>
+    </table>
+</div>
+
+
+
+<div *ngIf="dashboardButtonName=='GetOrderDetails';">
+    <br>
+    <h4>/Order Details</h4>
+    <table class="table table-bordered table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Transaction ID</th>                
+                <th>Registration No</th>         
+                <th>Card Id</th>     
+                <th>Product Id</th>     
+                <th>Quantity</th>
+                <th>Total Amount</th> 
+                <th>Emi Duration</th>  
+                <th>EMI Paid</th>
+                <th>EMI Balance</th>
+                <th>Created Date</th>
+            </tr>
+            </thead>
+            <tbody>
+                
+            <tr *ngFor="let value of order">
+                
+                <td scope="row">{{value.TransactionID}}</td>
+                <td>{{value.RegNumber}}</td>
+                <td>{{value.CardID}}</td>
+                <td>{{value.ProductID}}</td>
+                <td>{{value.Quantity}}</td>
+                <td>{{value.TotalAmount}}</td>
+                <td>{{value.EMIDuration}}</td>
+                <td>{{value.EMIPaid}}</td>
+                <td>{{value.EMIBalance}}</td>
+                <td>{{value.CreatedDate}}</td>
+            </tr>
+            </tbody>
+    </table>
+</div>
 
 
 <app-footer></app-footer>

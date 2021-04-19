@@ -1,8 +1,9 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreditInfoModule } from 'src/app/modules/credit-info/credit-info.module';
 import { EmiCardInfoModule } from 'src/app/modules/emi-card-info/emi-card-info.module';
 import { OrderDetailsModule } from 'src/app/modules/order-details/order-details.module';
+import { PurchasedProductInfoModule } from 'src/app/modules/purchased-product-info/purchased-product-info.module';
 import { UserLoginService } from 'src/app/services/user-login.service';
 import { UserLoginComponent } from '../user-login/user-login.component';
 
@@ -11,13 +12,13 @@ import { UserLoginComponent } from '../user-login/user-login.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit{
   model:any=[];
   svc:UserLoginService;
   ngzone:NgZone;
   router:Router;
   userlogin:UserLoginComponent;
-
+  purchasedList:PurchasedProductInfoModule[];
   order:OrderDetailsModule[];
 
   emicard=new EmiCardInfoModule(); 
@@ -52,11 +53,13 @@ export class DashboardComponent implements OnInit {
    remainingCredit:number;
    totalCredit:number;
    regNumber:number;
+   dashboardButtonName:string="";
   ngOnInit(): void {
-    this.custusername = localStorage.getItem("UserUname");
-    //Getting The card Details of The Logged In Customer
+      
+      this.custusername = localStorage.getItem("UserUname");
     this.svc.GetCardDetails(this.custusername).subscribe((data:EmiCardInfoModule)=>
     {
+      
       console.log(data)
       this.custname = data.CustName;
       localStorage.setItem("LoggedRegNumber",""+data.RegNumber);
@@ -67,7 +70,7 @@ export class DashboardComponent implements OnInit {
       //this.projid=data.projid;
 
       console.log(data.RegNumber + "," + data.CardNumber + "," + data.ValidityPeriod + "," + data.CardType + "," + data.AccountStatus );
-      alert(data.RegNumber + "," + data.CardNumber + "," + data.ValidityPeriod + "," + data.CardType + "," + data.AccountStatus );
+      //alert(data.RegNumber + "," + data.CardNumber + "," + data.ValidityPeriod + "," + data.CardType + "," + data.AccountStatus );
        
     });
     //Getting Credit Card Info Of Logged In  Customer
@@ -78,34 +81,53 @@ export class DashboardComponent implements OnInit {
       this.remainingCredit=data.RemainingCredit;
       this.totalCredit=data.TotalCredit;
     })
-    //Getting The Order Details of PArticular Customer
+    
+  }
+  GetPurchasedProducts(){
+    this.dashboardButtonName="GetPurchasedProducts";
+    this.svc.GetPurchasedProducts(this.regNumber).subscribe((data:PurchasedProductInfoModule[])=>{
+      this.purchasedList = data;
+      console.log(data);
+    })
+  }
+  GetOrderDetails(){
+    this.dashboardButtonName="GetOrderDetails";
     this.svc.GetOrderDetails(this.custusername).subscribe((data:OrderDetailsModule[])=>
     {
         this.order=data;
         console.log(this.order);
+
     });
   }
+  CheckApprovalStatus()
+  {
+    this.dashboardButtonName="CheckApprovalStatus";
+    this.svc.CheckApprovalStatus(4).subscribe((data:boolean)=>{//Instead of 4 use this.regNumber
+      console.log('User approved? : ' +data);
+      let res="";
+      if(this.cardtype=="Gold")
+      {
+        res="500";
+      }
+      else
+      {
+        res="1000";
+      }
+      if(data==true)
+      {
+        alert("Not Approved Please pay the Required Amount!!!");
 
-  // CardDetails(idform:NgForm):void
-  // {
-  //   console.log(idform.value);
-  //   this.emicard.Username=this.custusername;
+        alert("Card type: "+this.cardtype);
+        alert("Paid rupees:"+res);
+        alert("User Approved!!!");
+      }
+      else
+      {
+        alert("Registeration fee is paid!!!");
+      }
+
+  });
     
-  //   this.svc.GetCardDetails(this.emicard.Username).subscribe((data:EmiCardInfoModule)=>
-  //   {
-  //     this.custname = this.custusername;
-  //     this.regno= data.RegNumber;
-  //     this.cardno=data.CardNumber;
-  //     this.validity=data.ValidityPeriod;
-  //     this.cardtype=data.CardType;
-  //     this.accountstatus=data.AccountStatus;
-  //     //this.projid=data.projid;
-
-  //     console.log(data.RegNumber + "," + data.CardNumber + "," + data.ValidityPeriod + "," + data.CardType + "," + data.AccountStatus );
-  //     alert(data.RegNumber + "," + data.CardNumber + "," + data.ValidityPeriod + "," + data.CardType + "," + data.AccountStatus );
-       
-  //   });
-  // }
-  
+  }
 
 }
