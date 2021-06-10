@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { CommonModule } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ProductListComponent,
     PlaceOrderComponent,
     DashboardComponent,
-    OtpComponent
+    OtpComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,117 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h2 class="card-header" style="text-align: center;">Update</h2>
+<form [formGroup]="editCustomer" (ngSubmit)="UpdateCustomer()">
+        <div class="form-group">
+            <br>
+            <label>Customer Name</label>
+                <input type="text" formControlName="CustName"   required>
+                <div *ngIf="editCustomer.controls['CustName'].invalid && editCustomer.controls['CustName'].touched" class="alert alert-danger">
+                    <div *ngIf="editCustomer.controls['CustName'].errors.required">
+                    Name is required.
+                  </div>
+                </div>
+             
+            <div  class="invalid-feedback">
+                <div >CustName is required</div>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <br>
+            <label>PhoneNo</label>
+                <input type="number" formControlName="PhoneNo" >
+                <div *ngIf="editCustomer.controls['PhoneNo'].invalid && editCustomer.controls['PhoneNo'].touched" class="alert alert-danger">
+                    <div *ngIf="editCustomer.controls['PhoneNo'].errors.required">
+                        PhoneNo is required.
+                  </div>  
+                  <div *ngIf="editCustomer.controls['PhoneNo'].errors.pattern">
+                      Phone should be 10 digits long.
+</div>
+         </div>
+            <div  class="invalid-feedback">
+                <div ></div>PhoneNo is required</div>
+            </div>
+           
+
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="CustEmail" class="form-control"/>
+
+              <div *ngIf="editCustomer.controls['CustEmail'].invalid && editCustomer.controls['CustEmail'].touched" class="alert alert-danger">
+                    <div *ngIf="editCustomer.controls['CustEmail'].errors.required">
+                        Customer Email is required.
+                  </div>  
+                  <div *ngIf="editCustomer.controls['CustEmail'].errors.pattern">
+                    Invalid Email Pattern.
+                </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+            <label> BankName </label>
+            <input type="text" formControlName="BankName" class="form-control"  >
+                <div *ngIf="editCustomer.controls['BankName'].invalid && editCustomer.controls['BankName'].touched" class="alert alert-danger">
+                    <div *ngIf="editCustomer.controls['BankName'].errors.required">
+                        BankName is required.
+                    </div>
+      
+        </div>
+        <div class="form-group ">
+            <label>Customer Address</label>
+            <input type="text"formControlName="CustAddress" class="form-control" >
+            
+            <div *ngIf="editCustomer.controls['CustAddress'].invalid && editCustomer.controls['CustAddress'].touched" class="alert alert-danger">
+                <div *ngIf="editCustomer.controls['CustAddress'].errors.required">
+                    CustAddress is required.
+              </div>
+            </div>              
+            </div>
+        </div>
+ 
+  
+        <div class="form-group">
+            <label>Card Type</label>
+           <input type="text" formControlName="CardType" class="form-control" > 
+     
+           <div *ngIf="editCustomer.controls['CardType'].invalid && editCustomer.controls['CardType'].touched" class="alert alert-danger">
+            <div *ngIf="editCustomer.controls['CardType'].errors.required">
+                CardType is required.
+          </div>
+        </div>
+            </div>
+    
+
+
+        <div class="form-group ">
+            <label>IFSCCode</label>
+            <input type="text" formControlName="IFSCCode" class="form-control"  />
+            <div *ngIf="editCustomer.controls['IFSCCode'].invalid && editCustomer.controls['IFSCCode'].touched" class="alert alert-danger">
+                <div *ngIf="editCustomer.controls['IFSCCode'].errors.required">
+                    IFSCCode is required.
+                     <div *ngIf="editCustomer.controls['IFSCCode'].hasError('minLength')">
+                        Invalid IFSCCode.
+                        </div>
+                        <div *ngIf="editCustomer.controls['IFSCCode'].hasError('maxLength')">
+                            Invalid IFSCCode.
+                            </div>
+                            
+              </div>
+            </div>
+            </div>
+      
+    
 
     <div class="form-group">
-        <button  class="btn btn-primary">Update</button>
+        <button  class="btn btn-primary" [disabled]="editCustomer.invalid" >Update</button>
     </div>
-    
+  
+</form>
+</div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>

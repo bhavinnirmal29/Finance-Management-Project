@@ -9,6 +9,7 @@ import { ReginfoModule } from 'src/app/modules/reginfo/reginfo.module';
 import { AdminInfoService } from 'src/app/services/admin-info.service';
 import { LoginInfoService } from 'src/app/services/login-info.service';
 import { ActivityLogInfoModule } from 'src/app/modules/activity-log-info/activity-log-info.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 // import * as bootstrap from 'bootstrap';
 // import * as jquery from 'jquery'
 
@@ -18,6 +19,8 @@ import { ActivityLogInfoModule } from 'src/app/modules/activity-log-info/activit
   styleUrls: ['./admin-rights.component.css']
 })
 export class AdminRightsComponent implements OnInit {
+  filterTextCustomer:string;
+  filterTextProducts:string;
   custid:number;
   model:any[];
   buttonName:string="GetCustomers";
@@ -44,9 +47,9 @@ export class AdminRightsComponent implements OnInit {
       console.log(this.custlist);
     });
   }
-  GetCustomerByID(){
-    this.buttonName="GetCustomerByID";
-  }
+  // GetCustomerByID(){
+  //   this.buttonName="GetCustomerByID";
+  // }
   GetProducts(){
     this.buttonName="GetProducts";
 

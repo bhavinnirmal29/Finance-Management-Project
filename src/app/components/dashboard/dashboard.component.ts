@@ -102,7 +102,7 @@ export class DashboardComponent implements OnInit{
   CheckApprovalStatus()
   {
     this.dashboardButtonName="CheckApprovalStatus";
-    this.svc.CheckApprovalStatus(4).subscribe((data:boolean)=>{//Instead of 4 use this.regNumber
+    this.svc.CheckApprovalStatus(this.regNumber).subscribe((data:boolean)=>{//Instead of 4 use this.regNumber
       console.log('User approved? : ' +data);
       let res="";
       if(this.cardtype=="Gold")
@@ -119,7 +119,7 @@ export class DashboardComponent implements OnInit{
 
         alert("Card type: "+this.cardtype);
         alert("Paid rupees:"+res);
-        alert("User Approved!!!");
+        alert("Card Approved!!!");
       }
       else
       {

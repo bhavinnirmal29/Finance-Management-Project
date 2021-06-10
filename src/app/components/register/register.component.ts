@@ -43,7 +43,6 @@ export class RegisterComponent implements OnInit {
       if(data==true){
         alert("Your Registration is Complete");
         this.ngZone.run(()=>this.router.navigateByUrl('/UserLogin'));
-
       }
       else{
         alert("Data not inserted");

@@ -2,39 +2,35 @@
 <footer class="container-fluid bg-footer">
 
     <!-- Footer Elements -->
-    <div class="container">
+    <div class="container-fluid">
   
       <!-- Social buttons -->
       <ul class="list-unstyled list-inline text-center" style="margin-top:20px;padding-top:50px">
         <li class="list-inline-item">
             <a [routerLink]="['/Home']" class="footer-link-style">
-              Home
+              Finance Management System
             </a>
             &nbsp;&nbsp;|
           </li>
-        <li class="list-inline-item">
-            <a [routerLink]="['/Login']" class="footer-link-style">
-              Login
-            </a>
-            &nbsp;&nbsp;|
-          </li>
-        <li class="list-inline-item pipe-style">
-          <a [routerLink]="['/Register']" class="footer-link-style">
-            Register
-          </a>
-        </li>
       </ul>
       <!-- Social buttons -->
-  
-    </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div id="social">
+            <a class="facebookBtn smGlobalBtn" href="#!"></a>
+            <a class="googleplusBtn smGlobalBtn" href="#!"></a>
+          </div>
+        </div>
+      </div>
     <!-- Footer Elements -->
-  
+    
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3" style="color: white;">&copy; 2020 Larsen & Toubro Infotech Limited
       <a href="#">FMS.com</a>
     </div>
     <!-- Copyright -->
-  
+  </div>
   </footer>
   <!-- Footer -->
+  
   <router-outlet></router-outlet>

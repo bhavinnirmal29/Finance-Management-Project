@@ -21,3 +21,68 @@
     background-color: #000000;
     background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
 }
+
+
+#social {
+    margin: 20px 10px;
+    text-align: center;
+  }
+  
+  .smGlobalBtn {
+    /* global button class */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 2px 2px #999;
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+  }
+  .facebookBtn {
+    background: #4060A5;
+    margin-right: 10px;
+  }
+  
+  .facebookBtn:before {
+    /* use :before to add the relevant icons */
+    font-family: "FontAwesome";
+    content: "\f09a";
+    /* add facebook icon */ 
+  }
+  
+  .facebookBtn:hover {
+    color: #2196f3;
+    background: #111111;
+    transition-duration: 0.5s;
+    transition: background-color 0.5s ease;
+  }
+  
+  
+  
+  /* google plus button class*/
+  
+  .googleplusBtn {
+    background: #e64522;
+  }
+  
+  .googleplusBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0d5";
+    /* add googleplus icon */
+  }
+  
+  .googleplusBtn:hover {
+    color: #e64522;
+    background: #111111;
+    transition-duration: 0.5s;
+    transition: background-color 0.5s ease;
+  }

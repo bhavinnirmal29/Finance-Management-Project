@@ -62,8 +62,6 @@ export class ProductListComponent implements OnInit {
       this.month9=this.convertToInt(this.PPrice/9);
       this.month12=this.convertToInt(this.PPrice/12);
     })
-
-    
    
   }
   emiDuration:number;

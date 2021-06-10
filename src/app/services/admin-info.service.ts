@@ -13,7 +13,7 @@ import { ReginfoModule } from '../modules/reginfo/reginfo.module';
 export class AdminInfoService {
 
   http:HttpClient;
-  url:string='http://localhost:51996/api/AdminAPI';
+  url:string='http://localhost:56054/api/AdminAPI';
   httpOptions={headers:new HttpHeaders({
     'Content-Type':'application/json'
   })
@@ -56,8 +56,9 @@ export class AdminInfoService {
   {
     return this.http.get<boolean>(this.url+"/Activate/" +RegNumber);
   }
-  UpdateCustomer(id : number, cust :AdminInfoModule) : Observable<boolean>
+  UpdateCustomer(id : number, cust :ReginfoModule) : Observable<boolean>
   {
+    console.log(cust);
   return this.http.put<boolean>(this.url + "/" + "UpdateCustomer" + "/" + id, cust, this.httpOptions);
   }
   getCurrentData(id:number)

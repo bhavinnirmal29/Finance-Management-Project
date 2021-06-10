@@ -9,7 +9,7 @@ import { OtpModule } from '../modules/otp/otp.module';
 export class OtpService {
     otp:OtpModule;
     http:HttpClient;
-    url:string='http://localhost:51996/api/UserLoginAPI';
+    url:string='http://localhost:56054/api/UserLoginAPI';
     httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })

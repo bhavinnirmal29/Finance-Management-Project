@@ -11,12 +11,6 @@ export class LoginInfoService {
   userLogged:boolean=false;
   ngZone:NgZone;
   router:Router;
-  // adminUsername:string;
-  // constructor() { 
-  // }
-  // Login(admin:AdminInfoModule){
-  //   if()
-  // }
   userName:string;
   name1:string;
   user:string;
@@ -28,7 +22,7 @@ export class LoginInfoService {
   Login(adminUsername:string){
     this.adminLogged=true;
     this.name1 = localStorage.getItem("AdminUsername");
-    this.adminUsername = localStorage.getItem("AdminUsername");
+    //this.adminUsername = localStorage.getItem("AdminUsername");
     //alert(this.name1+" Name 1 local Storage");
     this.adminUsername=this.name1;
   }

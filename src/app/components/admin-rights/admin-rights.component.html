@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <h4 class="justify-content-center" style="margin-top: 10px;">Admin Rights / <span style="opacity: 0.6;">{{buttonName}}</span></h4>
     <a class="btn btn-primary" (click)="GetCustomers()" role="button">Get Customers</a>&nbsp;
-    <a class="btn btn-primary" (click) = "GetCustomerByID()" role="button">Get Customer By ID</a>&nbsp;
     <a class="btn btn-primary" (click)="GetProducts()"  role="button">Get Products</a>&nbsp;
     <a class="btn btn-primary" (click)="GetOrderDetails()"  role="button">Get Order Details</a>&nbsp;
     <a class="btn btn-primary" (click)="PendingRequests()"  role="button">Pending Requests</a>&nbsp;
@@ -9,7 +8,7 @@
 
     <hr>
     <div *ngIf="buttonName=='GetActivityLog';" id="buttonName">
-        <table class="table">
+        <table class="table table-dark table-bordered">
             <thead>
                 <tr>
                     <th>Activity Id</th>
@@ -30,6 +29,10 @@
     </div>
 
     <div *ngIf="buttonName=='GetCustomers';" id="buttonName">
+        <div class="container input-group row">
+            <input type="search" class="form-control rounded col-sm-6" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" [(ngModel)]="filterTextCustomer" style="font-size: larger;" />
+          </div>
         <table class="table table-bordered table-dark table-inverse table-responsive" style="margin-top: 10px;font-family:Arial, Helvetica, sans-serif">
             <thead class="thead-inverse">
                 <tr>
@@ -48,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of custlist;">
+                <tr *ngFor="let item of custlist | filter:filterTextCustomer;">
                     <td scope="row">{{item.RegNumber}}</td>
                     <td>{{item.CustName}}</td>
                     <td>{{item.PhoneNo}}</td>
@@ -60,22 +63,18 @@
                     <!-- <td>{{item.AccountNumber}}</td> -->
                     <td>{{item.IFSCCode}}</td>
             
-                    <td> <a routerLink="/UpdateCustomer/{{item.RegNumber}}" class="btn btn-outline-primary" (click) ="UpdateCustomer(item.RegNumber)"> Update Customer</a></td>
+                    <td> <a routerLink="/UpdateCustomer/{{item.RegNumber}}" class="btn btn-outline-primary"> Update Customer</a></td>
                     <td><a class="btn btn-outline-primary" (click) ="Delete(item.RegNumber)">DeleteCustomer</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div *ngIf="buttonName=='GetCustomerByID';" style="margin-bottom: 20%;">
-        <form action="" #DeleteForm = "ngForm" (ngSubmit) = "Delete(DeleteForm)">
-            <div class="form-group">
-            <label for="cid">Customer ID : </label>
-            <input type="text" class="form-control col-md-6" name="cid" aria-describedby="helpId" placeholder="Enter Customer ID" required>
-            <br><span *ngIf="cid.errors?.required">Registration ID cannot be blank</span>
-            </div>
-        </form>
-    </div>
+    
     <div *ngIf="buttonName=='GetProducts';" style="margin-bottom: 10%;">
+        <div class="container input-group row">
+            <input type="search" class="form-control rounded col-sm-6" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" [(ngModel)]="filterTextProducts" style="font-size: larger;" />
+          </div>
         <table id="Example1" class="table table-bordered table-dark table-inverse table-responsive" datatable>
             <thead class="thead-inverse">
                 <tr>
@@ -90,7 +89,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of productList">
+                    <tr *ngFor="let item of productList | filter:filterTextProducts">
                         <td scope="row">{{item.ProductID}}</td>
                         <td><img src="../../../assets/images/Products/{{item.ProductID}}.jpg" width="200" height="200" alt=""></td>
                         <td>{{item.ProductName}}</td>
@@ -134,8 +133,8 @@
                 </tbody>
         </table>
     </div>
-    <div *ngIf="buttonName=='PendingRequests';">
-        <table class="table table-bordered table-dark table-inverse table-responsive" style="margin-top: 10px;font-family:Arial, Helvetica, sans-serif">
+    <div *ngIf="buttonName=='PendingRequests';" style="margin-top: 4em;margin-bottom: 5em;">
+        <table class="table table-bordered table-dark table-inverse table-responsive" style="margin-top: 10px;font-family:Arial, Helvetica, sans-serif;">
             <thead class="thead-inverse">
                 <tr>
                     <th>RegNumber</th>

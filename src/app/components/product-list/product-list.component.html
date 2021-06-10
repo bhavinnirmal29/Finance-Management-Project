@@ -16,7 +16,7 @@
     <div class="row mt-5">
         <div class="col-sm-4" *ngFor="let data of prod; let i=index;">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/images/Products/{{i+1}}.jpg" alt="Card image cap">
+                <img class="card-img-top" src="../../../assets/images/Products/{{data.ProductID}}.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">{{data.ProductName}}</h5>
                 <p class="card-text">{{data.ProductDesc}}</p>

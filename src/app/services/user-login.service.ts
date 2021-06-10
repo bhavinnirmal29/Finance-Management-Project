@@ -15,7 +15,7 @@ export class UserLoginService {
 
   cust:UserLoginComponent;
   http:HttpClient;
-  url:string='http://localhost:51996/api/UserLoginAPI';
+  url:string='http://localhost:56054/api/UserLoginAPI';
   httpOptions = {headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
@@ -44,10 +44,11 @@ export class UserLoginService {
   GetPurchasedProducts(regNumber:number):Observable<PurchasedProductInfoModule[]>{
     return this.http.get<PurchasedProductInfoModule[]>(this.url+"/GetPurchasedProducts"+"/"+regNumber);
   }
-  // GetCustomerByUsername(username:string):Observable<ReginfoModule[]>{
-  //   return this.http.get<ReginfoModule[]>(this.url+"/GetCustomerByUserName"+"/"+username);
-  // }
+ //PayNow
   CheckApprovalStatus(RegNumber:number):Observable<boolean>{
     return this.http.get<boolean>(this.url+"/CheckApprovalStatus/"+RegNumber);
   }
+  // GetCustomerByUsername(username:string):Observable<ReginfoModule[]>{
+  //   return this.http.get<ReginfoModule[]>(this.url+"/GetCustomerByUserName"+"/"+username);
+  // }
 }

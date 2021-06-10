@@ -29,10 +29,8 @@ export class UserLoginComponent implements OnInit {
    username:string;
   ngOnInit(): void {
 
-  
- 
   }
- 
+  data1:string= " Login SuccessFull";
   showModal():void {
     ($("#myModal") as any).modal('show');
   }
@@ -69,6 +67,5 @@ export class UserLoginComponent implements OnInit {
     )
 
   }
-
 
 }
